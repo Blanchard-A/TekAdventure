@@ -1,11 +1,11 @@
 ##
 ## Makefile for gfx_tekadventure in /home/puilla_e/Semestre2/infographie
-## 
+##
 ## Made by edouard puillandre
 ## Login   <puilla_e@epitech.net>
-## 
+##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Tue Mar 29 16:54:08 2016 edouard puillandre
+## Last update Thu Mar 31 14:48:27 2016 edouard puillandre
 ##
 
 DEBUG	=	yes
@@ -37,7 +37,8 @@ LDFLAGS	=	-L/usr/local/lib		\
 
 SRC	=	src/main.c		\
 		src/free_all.c		\
-		src/my_init_fct.c
+		src/my_init_fct.c	\
+		src/bitmap.c
 
 RM	=	rm -f
 
