@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Thu Mar 31 14:46:56 2016 edouard puillandre
-** Last update Thu Mar 31 14:48:02 2016 edouard puillandre
+** Last update Thu Mar 31 16:47:39 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -26,6 +26,8 @@ t_bunny_pixelarray	*fill_bitmap(unsigned int *file, t_infoheader *buffer2)
   i = 0;
   while (i < (buffer2->width * buffer2->height))
     {
+      /* j = (buffer2->height - 1 - (i / width))  * width; */
+      /* j = j + (i + 3 * width / 4 - 1) % width; */
       j = i % width + (buffer2->height - 1 - (i / width))  * width;
       color[j].full = file[i];
       mem = color[j].argb[0];
