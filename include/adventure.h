@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Wed Apr  6 17:44:56 2016 edouard puillandre
+** Last update Wed Apr  6 20:04:01 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -27,6 +27,8 @@
 # include <math.h>
 # include <unistd.h>
 
+typedef struct s_data * data;
+
 /*definition d'un calque: ceux-ci seront stocké dans un tableau*/
 typedef struct		s_calque
 {
@@ -43,6 +45,13 @@ typedef struct		s_move
   int			div; /* nb image dans le sprite*/
   int			cur_pos; /* position courante */
 }			t_move;
+
+/*text avec position*/
+typedef struct		s_text
+{
+  t_bunny_position	*pos;
+  char			*str;
+}			t_text;
 
 /* défini l'échelle, la position et devant quel calque se trouve le move concerné (pnj / objet)*/
 typedef struct		s_pixplus
@@ -76,7 +85,10 @@ typedef struct	s_char
 typedef struct	s_obj
 {
   t_pixplus	*pix;
-  char		*name;
+  t_text	*name;
+  t_text	*desc; /* description de l'objet */
+  bool		pick; /* objet pickable ou non*/
+  int		(*fct)(data); /* action de l'objet en fonction de t_data */
 }		t_obj;
 
 /*coffre avec les objets présents (4 max) */
@@ -84,15 +96,16 @@ typedef struct	s_chest
 {
   t_pixplus	*pix;
   t_obj		obj[4];
+  t_text	*desc; /* description du coffre*/
 }		t_chest;
 
-/* Pnj avec 2 lignes de dialogues : une avant sans l'objet (obj) donné au pnj, l'autre, après. Parfois, l'objet give est donné*/
+/* Pnj avec 2 lignes de dialogues : une avant sans l'objet (obj) donné au pnj, l'autre, après. Parfois, l'objet give est donné aux joueurs*/
 typedef struct	s_pnj
 {
   t_pixplus	*pix;
-  char		*dial1;
-  char		*dial2;
-  char		*obj;
+  t_text	*dial1;
+  t_text	*dial2;
+  t_text	*obj;
   t_obj		*give;
 }		t_pnj;
 
