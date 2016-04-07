@@ -1,11 +1,11 @@
 /*
 ** my_init_fct.c for gfx_tekadventure in /home/puilla_e/Semestre2/infographie
-** 
+**
 ** Made by edouard puillandre
 ** Login   <puilla_e@epitech.net>
-** 
+**
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Tue Mar 29 16:52:27 2016 edouard puillandre
+** Last update Thu Mar 31 16:43:21 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -28,12 +28,11 @@ t_data		*my_init_data()
   if ((data = bunny_malloc(sizeof(t_data))) == NULL ||
       (data->win = bunny_start(WIN_X, WIN_Y, false, WIN_NAME)) == NULL ||
       (data->pos = bunny_malloc(sizeof(t_bunny_position))) == NULL ||
-      (data->pix = bunny_new_pixelarray(WIN_X, WIN_Y)) == NULL)
+      (data->pix = load_bitmap("decor.bmp")) == NULL)
     return (NULL);
   data->pos->x = PIX_X;
   data->pos->x = PIX_Y;
   data->mouse = (t_bunny_position *) bunny_get_mouse_position();
-  my_init_pix(data->pix);
 #ifdef DEBUG
   write(1, "INIT: OK\n", 9);
 #endif
