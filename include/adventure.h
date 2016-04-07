@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Wed Apr  6 20:04:01 2016 edouard puillandre
+** Last update Thu Apr  7 12:09:19 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -36,6 +36,7 @@ typedef struct		s_calque
   float			x;
   float			x_speed; /* vitesse suivant x (peut être nulle)*/
   int			y;
+  int			incr;
 }			t_calque;
 
 /* rassemblement des infos d'une des animations*/
@@ -66,7 +67,7 @@ typedef struct		s_pixplus
 typedef struct		s_node
 {
   t_bunny_position	*pos; /* position du noeud*/
-  int			*scale; /* echelle du perso à ce noeud*/
+  int			scale; /* echelle du perso à ce noeud*/
   int			*way; /* chemin sur lequel se trouve le noeud*/
   int			pos_way; /* position du noeud dans le chemin */
   int			type; /*indication (0) noeud de poid ou (1) de placement*/
