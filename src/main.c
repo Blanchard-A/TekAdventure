@@ -1,18 +1,18 @@
 /*
 ** main.c for gfx_tekadventure in /home/puilla_e/Semestre2/infographie/
-** 
+**
 ** Made by edouard puillandre
 ** Login   <puilla_e@epitech.net>
-** 
+**
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Tue Mar 29 16:52:11 2016 edouard puillandre
+** Last update Fri Apr  8 19:59:58 2016 edouard puillandre
 */
 
 #include "adventure.h"
 
 t_bunny_response	mainloop(t_data *data)
 {
-  bunny_blit(&data->win->buffer, &data->pix->clipable, data->pos);
+  bunny_blit(&data->win->buffer, &data->pex->clipable, data->pos);
   bunny_display(data->win);
   return (GO_ON);
 }

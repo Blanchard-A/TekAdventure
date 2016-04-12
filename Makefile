@@ -5,7 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Thu Mar 31 14:48:27 2016 edouard puillandre
+## Last update Thu Apr  7 18:25:27 2016 edouard puillandre
 ##
 
 DEBUG	=	yes
@@ -38,7 +38,9 @@ LDFLAGS	=	-L/usr/local/lib		\
 SRC	=	src/main.c		\
 		src/free_all.c		\
 		src/my_init_fct.c	\
-		src/bitmap.c
+		src/bitmap.c		\
+		src/tekpixel.c		\
+		src/scale.c
 
 RM	=	rm -f
 

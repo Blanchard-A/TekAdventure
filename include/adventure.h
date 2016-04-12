@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Thu Apr  7 12:09:19 2016 Alexandre Blanchard
+** Last update Fri Apr  8 19:34:15 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -111,7 +111,7 @@ typedef struct	s_pnj
 }		t_pnj;
 
 /*Structure d'un plan avec les calques, objets et node présent*/
-typedef struct	s_plan;
+typedef struct	s_plan
 {
   t_calque	**calque;
   t_obj		**obj;
@@ -134,6 +134,7 @@ typedef	struct		s_data
   t_bunny_window       	*win;
   t_bunny_position	*pos;
   t_bunny_pixelarray	*pix;
+  t_bunny_pixelarray	*pex;
   t_bunny_position	*mouse;
   t_plan		**plan;
   t_char		*player;
@@ -166,5 +167,14 @@ typedef struct s_infoheader
 t_bunny_response	my_fct_free(t_data *data, int error_true);
 t_data			*my_init_data();
 t_bunny_pixelarray	*load_bitmap(char *filepath);
+void			tekpixel(t_bunny_pixelarray	*pix,
+				 t_bunny_position	*pos,
+				 unsigned int		color);
+unsigned int		getpixel(t_bunny_pixelarray	*pix,
+				 t_bunny_position	*pos);
+void	to_pix_scale(t_bunny_pixelarray *dest,
+		     t_bunny_pixelarray	*src,
+		     t_bunny_position	*pos,
+		     int		scale);
 
 #endif /* !ADVENTURE_H_ */
