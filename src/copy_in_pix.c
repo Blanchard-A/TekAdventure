@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Fri Apr 15 17:27:51 2016 Alexandre Blanchard
+** Last update Fri Apr 15 18:44:12 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -69,11 +69,11 @@ void			copy_in_pix_bis(t_calque *calque, t_data *data)
   t_bunny_position	put;
   t_color		col;
 
-  tmp.x = - 1;
-  while (++tmp.x < calque->pix->clipable.clip_width)
+  tmp.y = - 1;
+  while (++tmp.y < calque->pix->clipable.clip_height)
     {
-      tmp.y = - 1;
-      while (++tmp.y < calque->pix->clipable.clip_height)
+      tmp.x = - 1;
+      while (++tmp.x < calque->pix->clipable.clip_width)
 	{
 	  get.x = tmp.x + calque->pix->clipable.clip_x_position;
 	  get.y = tmp.y + calque->pix->clipable.clip_y_position;

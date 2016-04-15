@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Wed Nov 18 19:39:56 2015 Mathieu Sauvau
-** Last update Fri Apr  8 20:02:25 2016 edouard puillandre
+** Last update Fri Apr 15 18:42:00 2016 edouard puillandre
 */
 
 #include "lapin.h"
@@ -19,9 +19,9 @@ void		tekpixel(t_bunny_pixelarray *pix_ar,
   int		new_pos;
 
   col = pix_ar->pixels;
-  new_pos = pix_ar->clipable.clip_width * pos->y  + pos->x;
+  new_pos = pix_ar->clipable.buffer.width * pos->y  + pos->x;
   if (new_pos >= 0 &&
-      new_pos < pix_ar->clipable.clip_width * pix_ar->clipable.clip_height)
+      new_pos < pix_ar->clipable.buffer.width * pix_ar->clipable.buffer.height)
     col[new_pos].full = color;
 }
 
@@ -32,9 +32,9 @@ unsigned int	getpixel(t_bunny_pixelarray	*pix_ar,
   int		new_pos;
 
   col = pix_ar->pixels;
-  new_pos = pix_ar->clipable.clip_width * pos->y  + pos->x;
+  new_pos = pix_ar->clipable.buffer.width * pos->y  + pos->x;
   if (new_pos >= 0 &&
-      new_pos < pix_ar->clipable.clip_width * pix_ar->clipable.clip_height)
+      new_pos < pix_ar->clipable.buffer.width * pix_ar->clipable.buffer.height)
     return (col[new_pos].full);
   return (0);
 }

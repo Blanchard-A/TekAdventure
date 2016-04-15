@@ -1,11 +1,11 @@
 /*
 ** change_clipable.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
-** 
+**
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
-** 
+**
 ** Started on  Fri Apr 15 11:21:40 2016 Alexandre Blanchard
-** Last update Fri Apr 15 16:41:36 2016 Alexandre Blanchard
+** Last update Fri Apr 15 18:25:50 2016 edouard puillandre
 */
 
 #include "adventure.h"
