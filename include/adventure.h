@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Fri Apr 15 11:23:53 2016 Alexandre Blanchard
+** Last update Fri Apr 15 14:27:20 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -139,6 +139,7 @@ typedef	struct		s_data
   t_bunny_window       	*win;
   t_bunny_position	*pos;
   t_bunny_pixelarray	*pix;
+  t_bunny_pixelarray	*pex;
   t_bunny_position	*mouse;
   t_plan		**plan;
   t_char		*player;
@@ -185,5 +186,13 @@ void			make_position_decor_2(t_data *);
 t_data			*malloc_and_load_perso(t_data *);
 void			change_clipable(t_bunny_pixelarray *, int);
 void			change_pos_perso(t_bunny_pixelarray *, int);
-
+void			tekpixel(t_bunny_pixelarray	*pix,
+				 t_bunny_position	*pos,
+				 unsigned int		color);
+unsigned int		getpixel(t_bunny_pixelarray	*pix,
+				 t_bunny_position	*pos);
+void	to_pix_scale(t_bunny_pixelarray *dest,
+		     t_bunny_pixelarray	*src,
+		     t_bunny_position	*pos,
+		     int		scale);
 #endif /* !ADVENTURE_H_ */
