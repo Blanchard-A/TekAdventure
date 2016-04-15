@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Fri Apr 15 14:31:02 2016 Alexandre Blanchard
+** Last update Fri Apr 15 17:20:52 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -179,6 +179,7 @@ t_data			*my_init_data();
 t_bunny_pixelarray	*load_bitmap(char *filepath);
 void			envoi_to_copy(t_data *data);
 void			copy_in_pix(t_calque *calque, t_data *data);
+void			copy_in_pix_bis(t_calque *calque, t_data *data);
 void			change_pos(t_data *);
 void			change_pos_nuages(t_data *);
 void			on_the_bord(t_data *, const t_bunny_position *);

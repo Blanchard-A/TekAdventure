@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Fri Apr 15 15:37:04 2016 edouard puillandre
+** Last update Fri Apr 15 17:21:48 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -62,9 +62,7 @@ void			copy_in_pix(t_calque *calque, t_data *data)
     }
 }
 
-void			copy_in_pix_bis(t_bunny_pixelarray	*pix,
-					t_bunny_position	*pos,
-					t_data		*data)
+void			copy_in_pix_bis(t_calque *calque, t_data *data)
 {
   t_bunny_position	tmp;
   t_bunny_position	get;
@@ -72,16 +70,16 @@ void			copy_in_pix_bis(t_bunny_pixelarray	*pix,
   t_color		col;
 
   tmp.x = - 1;
-  while (++tmp.x < pix->clipable.clip_width)
+  while (++tmp.x < calque->pix->clipable.clip_width)
     {
       tmp.y = - 1;
-      while (++tmp.y < pix->clipable.clip_height)
+      while (++tmp.y < calque->pix->clipable.clip_height)
 	{
-	  get.x = tmp.x + pix->clipable.clip_x_pos;
-	  get.y = tmp.y + pix->clipable.clip_y_pos;
-	  put.x = tmp.x + pos->x;
-	  put.y = tmp.y + pos->y;
-	  col.full = getpixel(pix, &get);
+	  get.x = tmp.x + calque->pix->clipable.clip_x_position;
+	  get.y = tmp.y + calque->pix->clipable.clip_y_position;
+	  put.x = tmp.x + (int) calque->x;
+	  put.y = tmp.y + (int) calque->y;
+	  col.full = getpixel(calque->pix, &get);
 	  if (compare_to_col(col, (t_color)BACK_COLOR) == - 1)
 	    tekpixel(data->pix, &put, col.full);
 	}
@@ -102,7 +100,7 @@ void	envoi_to_copy(t_data *data)
     {
       copy_in_pix(data->plan[0]->calque[i], data);
       if (i == 5)
-      	copy_in_pix_perso(data->player->mov[0]->calque[0], data);
+      	copy_in_pix_bis(data->player->mov[0]->calque[0], data);
       i++;
     }
 
