@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Fri Apr 15 14:31:02 2016 Alexandre Blanchard
+** Last update Fri Apr 15 16:34:12 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -199,4 +199,10 @@ void	to_pix_scale(t_bunny_pixelarray *dest,
 		     t_bunny_pixelarray	*src,
 		     t_bunny_position	*pos,
 		     int		scale);
+
+void	free_calque(t_data *);
+int	my_malloc_plan(t_data *, int);
+
+void	check_click(t_data *);
+
 #endif /* !ADVENTURE_H_ */

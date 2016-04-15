@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Fri Apr 15 15:37:04 2016 edouard puillandre
+** Last update Fri Apr 15 15:49:08 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -77,8 +77,8 @@ void			copy_in_pix_bis(t_bunny_pixelarray	*pix,
       tmp.y = - 1;
       while (++tmp.y < pix->clipable.clip_height)
 	{
-	  get.x = tmp.x + pix->clipable.clip_x_pos;
-	  get.y = tmp.y + pix->clipable.clip_y_pos;
+	  get.x = tmp.x + pix->clipable.clip_x_position;
+	  get.y = tmp.y + pix->clipable.clip_y_position;
 	  put.x = tmp.x + pos->x;
 	  put.y = tmp.y + pos->y;
 	  col.full = getpixel(pix, &get);
@@ -101,8 +101,10 @@ void	envoi_to_copy(t_data *data)
   while (data->plan[0]->calque[i] != NULL)
     {
       copy_in_pix(data->plan[0]->calque[i], data);
-      if (i == 5)
-      	copy_in_pix_perso(data->player->mov[0]->calque[0], data);
+      /* if (i == 5) */
+      /* 	copy_in_pix_bis(data->player->mov[0]->calque[0], */
+      /* 			data->player->mov[0]->pos, */
+      /* 			data); */
       i++;
     }
 

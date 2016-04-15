@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Thu Mar 31 14:46:56 2016 edouard puillandre
-** Last update Mon Apr 11 09:16:23 2016 Alexandre Blanchard
+** Last update Fri Apr 15 15:06:21 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -68,9 +68,9 @@ t_bunny_pixelarray	*load_bitmap(char *filepath)
       printf("STEP 2\n");
       return (NULL);
     }
-  /* bunny_free(file); */
-  /* bunny_free(buffer); */
-  /* bunny_free(buffer2); */
+  bunny_free(file);
+  bunny_free(buffer);
+  bunny_free(buffer2);
   close(fd);
   return (bitmap);
 }
