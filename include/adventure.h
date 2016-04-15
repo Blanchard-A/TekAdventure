@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Fri Apr  8 19:34:15 2016 edouard puillandre
+** Last update Wed Apr 13 16:35:47 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -32,6 +32,7 @@ typedef struct s_data * data;
 /*definition d'un calque: ceux-ci seront stocké dans un tableau*/
 typedef struct		s_calque
 {
+  char			*file;
   t_bunny_pixelarray	*pix;
   float			x;
   float			x_speed; /* vitesse suivant x (peut être nulle)*/
@@ -70,7 +71,7 @@ typedef struct		s_node
   int			scale; /* echelle du perso à ce noeud*/
   int			*way; /* chemin sur lequel se trouve le noeud*/
   int			pos_way; /* position du noeud dans le chemin */
-  int			type; /*indication (0) noeud de poid ou (1) de placement*/
+  int			type; /*indication (-1) noeud de poid ou (-2) de placement ou de sortie (numéro du plan) */
   int			id_cal; /*devant quel calque se trouve le node*/
 }			t_node;
 
@@ -79,6 +80,8 @@ typedef struct	s_char
 {
   t_move	**mov; /* tableau des mouvements*/
   t_node	*cur; /* node sur lequel est le perso */
+  t_node	*next; /* node sur lequel va le perso */
+  t_node	*dest; /* node de destination du perso */
   int		cur_mov; /*mouvement courant*/
 }		t_char;
 
@@ -104,9 +107,9 @@ typedef struct	s_chest
 typedef struct	s_pnj
 {
   t_pixplus	*pix;
-  t_text	*dial1;
-  t_text	*dial2;
-  t_text	*obj;
+  t_text	**dial;
+  int		cur_dial;
+  char		*obj;
   t_obj		*give;
 }		t_pnj;
 
@@ -123,7 +126,6 @@ typedef struct	s_plan
 
 typedef struct	s_game
 {
-  int		id_plan; /*plan courant*/
   time_t       	timer; /*timer avant la mort du perso*/
   t_obj		*sel_obj; /* objet sélectionné */
   int		action; /*action sélectionnée*/
@@ -139,6 +141,7 @@ typedef	struct		s_data
   t_plan		**plan;
   t_char		*player;
   t_game		*game;
+  int			id_plan; /*plan courant*/
 }			t_data;
 
 typedef struct s_header
