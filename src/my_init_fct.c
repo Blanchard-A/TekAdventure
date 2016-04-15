@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Fri Apr 15 14:18:08 2016 Alexandre Blanchard
+** Last update Fri Apr 15 14:58:40 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -21,32 +21,32 @@ void		my_init_pix(t_bunny_pixelarray	*pix)
     color[i].full = INIT_COLOR;
 }
 
-int		my_malloc_plan(t_data *data)
+int		my_malloc_plan(t_data *data, int nb_calc)
 {
-  int		i;
+  /* int		i; */
   int		j;
 
   j = 0;
-  i = 0;
+  /* i = 0; */
   data->plan = bunny_malloc(sizeof(t_plan *) * 1);
-  while (i < 2)
-    {
-      data->plan[i] = bunny_malloc(sizeof(t_plan) * 1);
-      data->plan[i]->calque = bunny_malloc(sizeof(t_calque *) * 9);
-      i++;
-    }
+  /* while (i < 2) */
+  /*   { */
+  data->plan[0] = bunny_malloc(sizeof(t_plan) * 1);
+  data->plan[0]->calque = bunny_malloc(sizeof(t_calque *) * (nb_calc + 1));
+    /*   i++; */
+    /* } */
   /* data->plan->calque = bunny_malloc(sizeof(t_calque *) * 1); */
-  i = 0;
-  while (i < 2)
+  /* i = 0; */
+  /* while (i < 2) */
+  /*   { */
+  j = 0;
+  while (j < nb_calc)
     {
-      j = 0;
-      while (j < 8)
-	{
-	  data->plan[i]->calque[j] = bunny_malloc(sizeof(t_calque) * 1);
-	  j++;
-	}
-      i++;
+      data->plan[0]->calque[j] = bunny_malloc(sizeof(t_calque) * 1);
+      j++;
     }
+      /* i++; */
+    /* } */
   return (0);
 }
 
@@ -58,7 +58,7 @@ t_data		*my_init_data()
 
   set_max_heap_size(50);
   if ((data = bunny_malloc(sizeof(t_data))) == NULL ||
-      (my_malloc_plan(data) != 0) ||
+      (my_malloc_plan(data, 8) != 0) ||
       (data->pix = bunny_new_pixelarray(WIN_X, WIN_Y)) == NULL ||
       (data->win = bunny_start(WIN_X, WIN_Y, false, WIN_NAME)) == NULL ||
       (data->pos = bunny_malloc(sizeof(t_bunny_position))) == NULL)

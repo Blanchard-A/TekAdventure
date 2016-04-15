@@ -1,0 +1,24 @@
+/*
+** check_click.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
+** 
+** Made by Alexandre Blanchard
+** Login   <blanch_p@epitech.net>
+** 
+** Started on  Fri Apr 15 16:31:12 2016 Alexandre Blanchard
+** Last update Fri Apr 15 16:40:28 2016 Alexandre Blanchard
+*/
+
+#include "adventure.h"
+#include <stdio.h>
+
+void	check_click(t_data *data)
+{
+  if ((data->mouse->x > 42 && data->mouse->x < 207) &&
+      (data->mouse->y > 733 && data->mouse->y < 807))
+    {
+      printf("UTILISER\n");
+    }
+  
+  
+  
+}

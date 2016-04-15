@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Fri Apr 15 14:26:41 2016 Alexandre Blanchard
+** Last update Fri Apr 15 17:22:43 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -57,19 +57,25 @@ t_bunny_response	click(t_bunny_event_state	state,
   pos = bunny_get_mouse_position();
   if (state == GO_DOWN)
     {
-      printf("YEAH\n");
+      /* printf("YEAH\n"); */
+      check_click(data);
       pos = bunny_get_mouse_position();
       printf("x = %i\ty = %i\n", pos->x, pos->y);
       if (data->id_plan == 0)
 	{
+	  free_calque(data);
+	  
 	  data->id_plan = 1;
-	  load_decor_2(data);
+	  if (load_decor_2(data) == NULL)
+	    return (0);
 	  return (GO_ON);
 	}
       if (data->id_plan == 1)
 	{
+	  free_calque(data);
 	  data->id_plan = 0;
-	  load_decor_1(data);
+	  if (load_decor_1(data) == NULL)
+	    return (0);
 	  return (GO_ON);
 	}
     }
