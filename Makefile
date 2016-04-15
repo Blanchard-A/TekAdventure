@@ -5,7 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Thu Mar 31 14:48:27 2016 edouard puillandre
+## Last update Fri Apr 15 11:22:54 2016 Alexandre Blanchard
 ##
 
 DEBUG	=	yes
@@ -38,7 +38,12 @@ LDFLAGS	=	-L/usr/local/lib		\
 SRC	=	src/main.c		\
 		src/free_all.c		\
 		src/my_init_fct.c	\
-		src/bitmap.c
+		src/bitmap.c		\
+		src/copy_in_pix.c	\
+		src/change_pos.c	\
+		src/decal.c		\
+		src/load.c		\
+		src/change_clipable.c
 
 RM	=	rm -f
 

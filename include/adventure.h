@@ -5,19 +5,21 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Thu Apr  7 12:09:19 2016 Alexandre Blanchard
+** Last update Fri Apr 15 11:23:53 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
 # define ADVENTURE_H_
 
-# define WIN_X (1280)
-# define WIN_Y (1024)
+# define WIN_X (1024)
+# define WIN_Y (920)
 # define INIT_COLOR (0x00000000)
-# define BACK_COLOR (0x00CC33FF)
+# define BACK_COLOR (0xFFCC33FF)
 # define WIN_NAME "Window"
 # define PIX_X (0)
 # define PIX_Y (0)
+# define WIDTH pix->clipable.clip_width
+# define HEIGHT pix->clipable.clip_height
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -33,16 +35,20 @@ typedef struct s_data * data;
 typedef struct		s_calque
 {
   t_bunny_pixelarray	*pix;
+  float			x_init;
+  float			y_init;
   float			x;
   float			x_speed; /* vitesse suivant x (peut être nulle)*/
-  int			y;
+  float			y;
+  float			y_speed;
   int			incr;
 }			t_calque;
 
 /* rassemblement des infos d'une des animations*/
 typedef struct		s_move
 {
-  t_bunny_pixelarray	*pix;
+  t_calque		**calque;
+  /* t_bunny_pixelarray	*pix; */
   int			div; /* nb image dans le sprite*/
   int			cur_pos; /* position courante */
 }			t_move;
@@ -111,19 +117,18 @@ typedef struct	s_pnj
 }		t_pnj;
 
 /*Structure d'un plan avec les calques, objets et node présent*/
-typedef struct	s_plan;
+typedef struct	s_plan
 {
   t_calque	**calque;
   t_obj		**obj;
   t_chest	**chest;
   t_pnj		**pnj;
   t_node	**node;
-  int		start_node; /*node de départ: peut changer par les déplacements du personnages*/
+  int		start_node; /*node de départ: peut changer par les déplacement du personnage*/
 }		t_plan;
 
 typedef struct	s_game
 {
-  int		id_plan; /*plan courant*/
   time_t       	timer; /*timer avant la mort du perso*/
   t_obj		*sel_obj; /* objet sélectionné */
   int		action; /*action sélectionnée*/
@@ -138,6 +143,7 @@ typedef	struct		s_data
   t_plan		**plan;
   t_char		*player;
   t_game		*game;
+  int		id_plan; /*plan courant*/
 }			t_data;
 
 typedef struct s_header
@@ -166,5 +172,18 @@ typedef struct s_infoheader
 t_bunny_response	my_fct_free(t_data *data, int error_true);
 t_data			*my_init_data();
 t_bunny_pixelarray	*load_bitmap(char *filepath);
+void			envoi_to_copy(t_data *data);
+void			copy_in_pix(t_calque *calque, t_data *data);
+void			change_pos(t_data *);
+void			change_pos_nuages(t_data *);
+void			on_the_bord(t_data *, const t_bunny_position *);
+void			have_pos(t_data *);
+t_data			*load_decor_1(t_data *);
+void			make_position_decor_1(t_data *);
+t_data			*load_decor_2(t_data *);
+void			make_position_decor_2(t_data *);
+t_data			*malloc_and_load_perso(t_data *);
+void			change_clipable(t_bunny_pixelarray *, int);
+void			change_pos_perso(t_bunny_pixelarray *, int);
 
 #endif /* !ADVENTURE_H_ */
