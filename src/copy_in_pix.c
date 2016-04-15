@@ -1,12 +1,12 @@
 
 /*
 ** copy_in_pix.c for tekadv in /home/blanch_p/Infographie/gfx_tekadventure
-** 
+**
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
-** 
+**
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Fri Apr 15 14:31:58 2016 Alexandre Blanchard
+** Last update Fri Apr 15 15:37:04 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -39,9 +39,9 @@ int	compare_to_col(t_color color, t_color back_color)
   return (0);
 }
 
-void	copy_in_pix(t_calque *calque, t_data *data)
+void			copy_in_pix(t_calque *calque, t_data *data)
 {
-  int	i;
+  int			i;
   t_bunny_position	pos;
   t_color		*color;
 
@@ -62,36 +62,29 @@ void	copy_in_pix(t_calque *calque, t_data *data)
     }
 }
 
-
-void	copy_in_pix_perso(t_calque *calque, t_data *data)
+void			copy_in_pix_bis(t_bunny_pixelarray	*pix,
+					t_bunny_position	*pos,
+					t_data		*data)
 {
-  int	i;
-  t_bunny_position	pos;
-  t_color		*color;
+  t_bunny_position	tmp;
+  t_bunny_position	get;
+  t_bunny_position	put;
+  t_color		col;
 
-  i = 0;
-  color = calque->pix->pixels;
-  while (i < calque->pix->clipable.clip_width
-	 * calque->pix->clipable.clip_height)
+  tmp.x = - 1;
+  while (++tmp.x < pix->clipable.clip_width)
     {
-      /* printf("i = %i\n", i); */
-      /* printf("width = %i\n", calque->pix->clipable.clip_width); */
-      /* printf("height = %i\n", calque->pix->clipable.clip_height); */
-      if (i == 90)
-	i = i + calque->pix->clipable.clip_width;
-      if (compare_to_col(color[i], (t_color)BACK_COLOR) == -1)
+      tmp.y = - 1;
+      while (++tmp.y < pix->clipable.clip_height)
 	{
-	  /* printf("\nPRINT\n"); */
-	  /* printf("calc x = %i\n", i % calque->pix->clipable.clip_width); */
-	  /* printf("calc y = %i\n", i / calque->pix->clipable.clip_width); */
-	  /* printf("width = %i\n", calque->pix->clipable.clip_width); */
-	  pos.x = i % calque->pix->clipable.clip_width + calque->x;
-	  pos.y = i / calque->pix->clipable.clip_width + calque->y;
-	  if (pos.x >= 0 && pos.x <= WIN_X)
-	    tekpixel(data->pix, &pos,
-		     ((unsigned int *)calque->pix->pixels)[i]);
+	  get.x = tmp.x + pix->clipable.clip_x_pos;
+	  get.y = tmp.y + pix->clipable.clip_y_pos;
+	  put.x = tmp.x + pos->x;
+	  put.y = tmp.y + pos->y;
+	  col.full = getpixel(pix, &get);
+	  if (compare_to_col(col, (t_color)BACK_COLOR) == - 1)
+	    tekpixel(data->pix, &put, col.full);
 	}
-      i++;
     }
 }
 
