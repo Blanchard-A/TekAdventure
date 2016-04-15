@@ -5,7 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Thu Apr  7 18:25:27 2016 edouard puillandre
+## Last update Fri Apr 15 14:28:09 2016 Alexandre Blanchard
 ##
 
 DEBUG	=	yes
@@ -39,6 +39,11 @@ SRC	=	src/main.c		\
 		src/free_all.c		\
 		src/my_init_fct.c	\
 		src/bitmap.c		\
+		src/copy_in_pix.c	\
+		src/change_pos.c	\
+		src/decal.c		\
+		src/load.c		\
+		src/change_clipable.c	\
 		src/tekpixel.c		\
 		src/scale.c
 

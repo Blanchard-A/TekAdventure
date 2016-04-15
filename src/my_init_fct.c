@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Thu Mar 31 16:43:21 2016 edouard puillandre
+** Last update Fri Apr 15 14:18:08 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -21,15 +21,63 @@ void		my_init_pix(t_bunny_pixelarray	*pix)
     color[i].full = INIT_COLOR;
 }
 
+int		my_malloc_plan(t_data *data)
+{
+  int		i;
+  int		j;
+
+  j = 0;
+  i = 0;
+  data->plan = bunny_malloc(sizeof(t_plan *) * 1);
+  while (i < 2)
+    {
+      data->plan[i] = bunny_malloc(sizeof(t_plan) * 1);
+      data->plan[i]->calque = bunny_malloc(sizeof(t_calque *) * 9);
+      i++;
+    }
+  /* data->plan->calque = bunny_malloc(sizeof(t_calque *) * 1); */
+  i = 0;
+  while (i < 2)
+    {
+      j = 0;
+      while (j < 8)
+	{
+	  data->plan[i]->calque[j] = bunny_malloc(sizeof(t_calque) * 1);
+	  j++;
+	}
+      i++;
+    }
+  return (0);
+}
+
+#include <stdio.h>
+
 t_data		*my_init_data()
 {
   t_data	*data;
 
+  set_max_heap_size(50);
   if ((data = bunny_malloc(sizeof(t_data))) == NULL ||
+      (my_malloc_plan(data) != 0) ||
+      (data->pix = bunny_new_pixelarray(WIN_X, WIN_Y)) == NULL ||
       (data->win = bunny_start(WIN_X, WIN_Y, false, WIN_NAME)) == NULL ||
-      (data->pos = bunny_malloc(sizeof(t_bunny_position))) == NULL ||
-      (data->pix = load_bitmap("decor.bmp")) == NULL)
-    return (NULL);
+      (data->pos = bunny_malloc(sizeof(t_bunny_position))) == NULL)
+    {
+      printf("%p\n", data->plan[0]->calque[0]->pix);
+      printf("%p\n", data->plan[0]->calque[1]->pix);
+      printf("%p\n", data->plan[0]->calque[2]->pix);
+      printf("%p\n", data->plan[0]->calque[3]->pix);
+      printf("%p\n", data->plan[0]->calque[4]->pix);
+      printf("%p\n", data->plan[0]->calque[5]->pix);
+      return (NULL);
+    }
+  data->id_plan = 0;
+  if (data->id_plan == 0)
+    load_decor_1(data);
+  /* if (data->id_plan == 1) */
+  /*   load_decor_2(data); */
+  malloc_and_load_perso(data);
+  
   data->pos->x = PIX_X;
   data->pos->x = PIX_Y;
   data->mouse = (t_bunny_position *) bunny_get_mouse_position();

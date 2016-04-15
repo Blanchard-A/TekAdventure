@@ -5,10 +5,12 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Thu Mar 31 14:46:56 2016 edouard puillandre
-** Last update Thu Mar 31 16:47:39 2016 edouard puillandre
+** Last update Mon Apr 11 09:16:23 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
+
+#include <stdio.h>
 
 t_bunny_pixelarray	*fill_bitmap(unsigned int *file, t_infoheader *buffer2)
 {
@@ -21,7 +23,10 @@ t_bunny_pixelarray	*fill_bitmap(unsigned int *file, t_infoheader *buffer2)
 
   width = buffer2->width;
   if ((bitmap = bunny_new_pixelarray(buffer2->width, buffer2->height)) == NULL)
-    return (NULL);
+    {
+      printf("STEP 3\n");
+      return (NULL);
+    }
   color = bitmap->pixels;
   i = 0;
   while (i < (buffer2->width * buffer2->height))
@@ -52,10 +57,20 @@ t_bunny_pixelarray	*load_bitmap(char *filepath)
       (fd = open(filepath, O_RDONLY)) == -1 ||
       (read(fd, buffer, 14)) < 0 ||
       (read(fd, buffer2, 40)) < 0)
-    return (NULL);
+    {
+      printf("STEP 1\n");
+      return (NULL);
+    }
   file = bunny_malloc(sizeof(*file) * (buffer2->width * buffer2->height));
   if (file == NULL || (read(fd, file, buffer->size_file)) < 0 ||
       (bitmap = fill_bitmap(file, buffer2)) == NULL)
-    return (NULL);
+    {
+      printf("STEP 2\n");
+      return (NULL);
+    }
+  /* bunny_free(file); */
+  /* bunny_free(buffer); */
+  /* bunny_free(buffer2); */
+  close(fd);
   return (bitmap);
 }
