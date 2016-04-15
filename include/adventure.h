@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Fri Apr 15 14:30:15 2016 edouard puillandre
+** Last update Fri Apr 15 14:31:02 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -147,11 +147,8 @@ typedef	struct		s_data
   t_plan		**plan;
   t_char		*player;
   t_game		*game;
-<<<<<<< HEAD
   int			id_plan; /*plan courant*/
-=======
-  int		id_plan; /*plan courant*/
->>>>>>> be0b39e8dad18e3933b09e848bef3a02d7d89d50
+  /* int		id_plan; /\*plan courant*\/ */
 }			t_data;
 
 typedef struct s_header

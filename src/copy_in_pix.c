@@ -6,23 +6,23 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Fri Apr 15 14:22:10 2016 Alexandre Blanchard
+** Last update Fri Apr 15 14:31:58 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
 
 #include <stdio.h>
 
-void	tekpixel(t_bunny_pixelarray *pix,
-		 t_bunny_position *pos,
-		 unsigned int color)
-{
-  int	position;
+/* void	tekpixel(t_bunny_pixelarray *pix, */
+/* 		 t_bunny_position *pos, */
+/* 		 unsigned int color) */
+/* { */
+/*   int	position; */
 
-  position = (pos->x + ((pos->y) * WIDTH));
-  if (position >= 0 && position < (HEIGHT * WIDTH))
-    ((unsigned int *)pix->pixels)[position] = color;
-}
+/*   position = (pos->x + ((pos->y) * WIDTH)); */
+/*   if (position >= 0 && position < (HEIGHT * WIDTH)) */
+/*     ((unsigned int *)pix->pixels)[position] = color; */
+/* } */
 
 int	compare_to_col(t_color color, t_color back_color)
 {
