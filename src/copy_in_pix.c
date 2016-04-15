@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Fri Apr 15 17:24:11 2016 edouard puillandre
+** Last update Fri Apr 15 17:27:51 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -81,7 +81,8 @@ void			copy_in_pix_bis(t_calque *calque, t_data *data)
 	  put.y = tmp.y + (int) calque->y;
 	  col.full = getpixel(calque->pix, &get);
 	  if (compare_to_col(col, (t_color)BACK_COLOR) == - 1)
-	    tekpixel(data->pix, &put, col.full);
+	    if (put.x >= 0 && put.x <= WIN_X)
+	      tekpixel(data->pix, &put, col.full);
 	}
     }
 }
@@ -98,7 +99,7 @@ void	envoi_to_copy(t_data *data)
   /*   } */
   while (data->plan[0]->calque[i] != NULL)
     {
-      copy_in_pix(data->plan[0]->calque[i], data);
+      copy_in_pix_bis(data->plan[0]->calque[i], data);
       if (i == 5)
       	copy_in_pix_bis(data->player->mov[0]->calque[0], data);
       i++;
