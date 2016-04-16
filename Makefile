@@ -5,7 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Fri Apr 15 16:33:31 2016 Alexandre Blanchard
+## Last update Sat Apr 16 14:38:51 2016 Alexandre Blanchard
 ##
 
 DEBUG	=	yes
@@ -46,7 +46,8 @@ SRC	=	src/main.c		\
 		src/change_clipable.c	\
 		src/tekpixel.c		\
 		src/scale.c		\
-		src/check_click.c
+		src/check_click.c	\
+		src/coef.c
 
 RM	=	rm -f
 

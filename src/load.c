@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Fri Apr 15 16:42:03 2016 Alexandre Blanchard
+** Last update Fri Apr 15 18:31:36 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"

@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Fri Apr 15 17:24:36 2016 edouard puillandre
+** Last update Sat Apr 16 15:08:16 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -85,6 +85,7 @@ typedef struct		s_node
 typedef struct	s_char
 {
   t_move	**mov; /* tableau des mouvements*/
+  float		coef; /* coef entre cur et next */
   t_node	*cur; /* node sur lequel est le perso */
   t_node	*next; /* node sur lequel va le perso */
   t_node	*dest; /* node de destination du perso */
@@ -139,6 +140,7 @@ typedef struct	s_game
 
 typedef	struct		s_data
 {
+  int			loop;
   t_bunny_window       	*win;
   t_bunny_position	*pos;
   t_bunny_pixelarray	*pix;
@@ -205,5 +207,8 @@ void	free_calque(t_data *);
 int	my_malloc_plan(t_data *, int);
 
 void	check_click(t_data *);
+
+int	calc_coef(float, float, t_bunny_position *);
+void	move_perso(t_data *);
 
 #endif /* !ADVENTURE_H_ */
