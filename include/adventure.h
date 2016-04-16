@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Fri Apr 15 17:24:36 2016 edouard puillandre
+** Last update Sat Apr 16 12:30:01 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -20,6 +20,33 @@
 # define PIX_Y (0)
 # define WIDTH pix->clipable.clip_width
 # define HEIGHT pix->clipable.clip_height
+# define NB_BUTTON (6)
+# define NB_OBJ (8)
+# define ID_USE (0)
+# define ID_GO (1)
+# define ID_PICK (2)
+# define ID_GIVE (3)
+# define ID_TALK (4)
+# define ID_LOOK (5)
+# define X_USE (55)
+# define Y_USE (740)
+# define X_GO (0)
+# define Y_GO (0)
+# define X_PICK (0)
+# define Y_PICK (0)
+# define X_GIVE (0)
+# define Y_GIVE (0)
+# define X_TALK (0)
+# define Y_TALK (0)
+# define X_LOOK (0)
+# define Y_LOOK (0)
+# define W_BUTTON (140)
+# define H_BUTTON (60)
+# define OBJ_WIDTH (85)
+# define OBJ_HEIGHT (70)
+# define OBJ_STEP (20)
+# define X_OBJ (595)
+# define Y_OBJ (740)
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -43,13 +70,14 @@ typedef struct		s_calque
   float			y;
   float			y_speed;
   int			incr;
+  int			scale;
+  int			id_calc;
 }			t_calque;
 
 /* rassemblement des infos d'une des animations*/
 typedef struct		s_move
 {
-  t_calque		**calque;
-  /* t_bunny_pixelarray	*pix; */
+  t_calque		**calque; /* t_bunny_pixelarray	*pix; */
   int			div; /* nb image dans le sprite*/
   int			cur_pos; /* position courante */
 }			t_move;
@@ -94,17 +122,16 @@ typedef struct	s_char
 /*Objet avec indication + nom*/
 typedef struct	s_obj
 {
-  t_pixplus	*pix;
-  t_text	*name;
+  t_calque	*calque;
+  char		*name;
   t_text	*desc; /* description de l'objet */
-  bool		pick; /* objet pickable ou non*/
   int		(*fct)(data); /* action de l'objet en fonction de t_data */
 }		t_obj;
 
 /*coffre avec les objets présents (4 max) */
 typedef struct	s_chest
 {
-  t_pixplus	*pix;
+  t_calque	*calque;
   t_obj		obj[4];
   t_text	*desc; /* description du coffre*/
 }		t_chest;
@@ -112,7 +139,7 @@ typedef struct	s_chest
 /* Pnj avec 2 lignes de dialogues : une avant sans l'objet (obj) donné au pnj, l'autre, après. Parfois, l'objet give est donné aux joueurs*/
 typedef struct	s_pnj
 {
-  t_pixplus	*pix;
+  t_move	*move;
   t_text	**dial;
   int		cur_dial;
   char		*obj;
@@ -130,6 +157,20 @@ typedef struct	s_plan
   int		start_node; /*node de départ: peut changer par les déplacement du personnage*/
 }		t_plan;
 
+typedef struct		s_button
+{
+  t_bunny_position	pos;
+  int			(*fct)(data);
+}			t_button;
+
+typedef struct		s_board
+{
+  t_calque		*calque;
+  t_button		**button;
+  t_obj			**obj;
+  int			sel;
+}			t_board;
+
 typedef struct	s_game
 {
   time_t       	timer; /*timer avant la mort du perso*/
@@ -146,6 +187,7 @@ typedef	struct		s_data
   t_bunny_position	*mouse;
   t_plan		**plan;
   t_char		*player;
+  t_board		*board;
   t_game		*game;
   int			id_plan; /*plan courant*/
   /* int		id_plan; /\*plan courant*\/ */
@@ -203,7 +245,13 @@ void	to_pix_scale(t_bunny_pixelarray *dest,
 
 void	free_calque(t_data *);
 int	my_malloc_plan(t_data *, int);
-
+t_board	*my_init_board();
 void	check_click(t_data *);
+int	my_use(t_data *);
+int	my_go(t_data *);
+int	my_pick(t_data *);
+int	my_give(t_data *);
+int	my_talk(t_data *);
+int	my_look(t_data *);
 
 #endif /* !ADVENTURE_H_ */

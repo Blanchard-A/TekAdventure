@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Fri Apr 15 17:22:43 2016 Alexandre Blanchard
+** Last update Sat Apr 16 12:30:39 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -13,7 +13,7 @@
 #include <stdio.h>
 
 t_bunny_response	mainloop(t_data *data)
-{  
+{
   /* load_decor_1(data);   */
   /* data->id_plan = 0; */
   /* envoi_to_copy(data); */
@@ -53,7 +53,7 @@ t_bunny_response	click(t_bunny_event_state	state,
   (void) data;
   (void) state;
   (void) key;
-  
+
   pos = bunny_get_mouse_position();
   if (state == GO_DOWN)
     {
@@ -64,7 +64,7 @@ t_bunny_response	click(t_bunny_event_state	state,
       if (data->id_plan == 0)
 	{
 	  free_calque(data);
-	  
+
 	  data->id_plan = 1;
 	  if (load_decor_2(data) == NULL)
 	    return (0);
@@ -103,6 +103,7 @@ int	main(int ac, char **av, char **env)
     return (1);
   if ((data = my_init_data()) == NULL)
     return (1);
+  my_init_board();
   bunny_set_loop_main_function((t_bunny_loop)mainloop);
   bunny_set_key_response((t_bunny_key)escape);
   bunny_set_move_response((t_bunny_move)move);
