@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 22:59:54 2016 Voyevoda
+** Last update Sun Apr 17 23:13:31 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -26,13 +26,17 @@ int		my_malloc_plan(t_data *data, int nb_calc)
   int		j;
 
   j = 0;
-  data->plan = bunny_malloc(sizeof(t_plan *) * 1);
-  data->plan[0] = bunny_malloc(sizeof(t_plan) * 1);
-  data->plan[0]->calque = bunny_malloc(sizeof(t_calque *) * (nb_calc + 1));
+  if ((data->plan = bunny_malloc(sizeof(t_plan *) * 1)) == NULL ||
+      (data->plan[0] = bunny_malloc(sizeof(t_plan) * 1)) == NULL ||
+      (data->plan[0]->calque = bunny_malloc(sizeof(t_calque *) *
+					    (nb_calc + 1))) == NULL)
+    return (-1);
   j = 0;
   while (j < nb_calc)
     {
-      data->plan[0]->calque[j] = bunny_malloc(sizeof(t_calque) * 1);
+      if ((data->plan[0]->calque[j] =
+	   bunny_malloc(sizeof(t_calque) * 1)) == NULL)
+	return (-1);
       j++;
     }
   return (0);
@@ -55,22 +59,20 @@ t_data		*my_init_data()
     }
   data->id_plan = 0;
   if (data->id_plan == 0)
-    {
-      load_decor_1(data);
-      load_node_1(data);
-    }
+      if (load_decor_1(data) == NULL || load_node_1(data) == -1)
+	return (NULL);
   if (data->id_plan == 1)
-    {
-      load_decor_2(data);
-      load_node_2(data);
-    }
-  malloc_and_load_perso(data);
+    if (load_decor_2(data) == NULL || load_node_2(data) == -1)
+      return (NULL);
+  if (malloc_and_load_perso(data) == NULL)
+    return (NULL);
   data->player->vec[0] = 0;
   data->player->vec[1] = 0;
   data->player->coef[0] = 0;
   data->player->coef[1] = 0;
   data->loop = 0;
-  data->player->chemin = bunny_malloc(sizeof(int) * 11);
+  if ((data->player->chemin = bunny_malloc(sizeof(int) * 11)) == NULL)
+    return (NULL);
   data->player->chemin[0] = -1;
   CUR = 0;
   MOV = 1;

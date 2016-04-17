@@ -1,30 +1,14 @@
 /*
 ** load.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
-** 
+**
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
-** 
+**
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:05:17 2016 Voyevoda
+** Last update Sun Apr 17 23:12:51 2016 Voyevoda
 */
 
 #include "adventure.h"
-
-void	free_calque(t_data *data)
-{
-  int	i;
-
-  i = 0;
-  while (data->plan[0]->calque[i] != NULL)
-    {
-      bunny_delete_clipable(&data->plan[0]->calque[i]->pix->clipable);
-      bunny_free(data->plan[0]->calque[i]);
-      i++;      
-    }
-  bunny_free(data->plan[0]->calque);
-  bunny_free(data->plan[0]);  
-  bunny_free(data->plan);
-}
 
 t_data	*malloc_and_load_perso(t_data *data)
 {
@@ -33,18 +17,20 @@ t_data	*malloc_and_load_perso(t_data *data)
 
   j = 0;
   i = 0;
-  data->player = bunny_malloc(sizeof(t_char) * 1);
-  data->player->mov = bunny_malloc(sizeof(t_move *) * 4);
+  if ((data->player = bunny_malloc(sizeof(t_char) * 1)) == NULL ||
+      (data->player->mov = bunny_malloc(sizeof(t_move *) * 4)) == NULL)
+    return (NULL);
   data->player->cur_node = 1;
   data->player->dest_node = 1;
   data->player->x = 193;
   data->player->y = 409;
   while (i < 4)
     {
-      data->player->mov[i] = bunny_malloc(sizeof(t_move) * 1);
-      data->player->mov[i]->calque = bunny_malloc(sizeof(t_calque *) * 2);
-      data->player->mov[i]->calque[0] = bunny_malloc(sizeof(t_calque ) * 1);
-      data->player->mov[i]->calque[1] = bunny_malloc(sizeof(t_calque ) * 1);
+      if ((MOVI = bunny_malloc(sizeof(t_move) * 1)) == NULL ||
+	  (MOVI->calque = bunny_malloc(sizeof(t_calque *) * 2)) == NULL ||
+	  (MOVI->calque[0] = bunny_malloc(sizeof(t_calque ) * 1)) == NULL ||
+	  (MOVI->calque[1] = bunny_malloc(sizeof(t_calque ) * 1)) == NULL)
+	return (NULL);
       i++;
     }
   data->player->mov[0]->calque[0]->pix = load_bitmap("walk_face_2.bmp");
@@ -78,12 +64,12 @@ t_data	*malloc_and_load_perso(t_data *data)
 t_data	*load_decor_1(t_data *data)
 {
   my_malloc_plan(data, 7);
-  data->plan[0]->pnj = malloc(sizeof(t_pnj *) * 2);
-  data->plan[0]->pnj[0] = malloc(sizeof(t_pnj) * 1);
-  data->plan[0]->pnj[0]->calque = malloc(sizeof(t_calque) * 1);
-  data->plan[0]->pnj[0]->dial = malloc(sizeof(char *) * 4);
-  data->plan[0]->pnj[0]->calque->pix = load_bitmap("pnj_vieux.bmp");
-  if ((data->plan[0]->calque[0]->pix =
+  if ((PLAN->pnj = bunny_malloc(sizeof(t_pnj *) * 2)) == NULL ||
+      (PLAN->pnj[0] = bunny_malloc(sizeof(t_pnj) * 1)) == NULL ||
+      (PLAN->pnj[0]->calque = bunny_malloc(sizeof(t_calque) * 1)) == NULL ||
+      (PLAN->pnj[0]->dial = bunny_malloc(sizeof(char *) * 4)) == NULL ||
+      (PLAN->pnj[0]->calque->pix = load_bitmap("pnj_vieux.bmp")) == NULL ||
+      (data->plan[0]->calque[0]->pix =
        load_bitmap("ressource/decor_1/ciel.bmp")) == NULL ||
       (data->plan[0]->calque[1]->pix =
        load_bitmap("ressource/decor_1/nuages.bmp")) == NULL ||
@@ -99,6 +85,8 @@ t_data	*load_decor_1(t_data *data)
        load_bitmap("ressource/decor_1/Falaise2.bmp")) == NULL)
     return (NULL);
   data->plan[0]->calque[7] = NULL;
+  data->plan[0]->pnj[1] = NULL;
+  data->plan[0]->obj = NULL;
   make_position_decor_1(data);
   return (data);
 }
@@ -147,21 +135,21 @@ void	make_position_decor_1(t_data *data)
   data->plan[0]->calque[5]->y_speed = 0;
   data->plan[0]->calque[6]->x_speed = -0.5;
   data->plan[0]->calque[6]->y_speed = 0.5;
-  data->plan[0]->pnj[0]->name = "Le Vieux";
-  data->plan[0]->pnj[0]->desc = "desc de robin";
+  data->plan[0]->pnj[0]->name = my_strcpy("Le Vieux");;
+  data->plan[0]->pnj[0]->desc = my_strcpy("desc de robin");
   data->plan[0]->pnj[0]->cur_dial = 0;
-  data->plan[0]->pnj[0]->obj = "clef";
+  data->plan[0]->pnj[0]->obj = my_strcpy("clef");
   data->plan[0]->pnj[0]->close = 0;
 }
 
 t_data	*load_decor_2(t_data *data)
 {
   my_malloc_plan(data, 3);
-  data->plan[0]->obj = malloc(sizeof(t_obj *) * 2);
-  data->plan[0]->obj[0] = malloc(sizeof(t_obj) * 1);
-  data->plan[0]->obj[0]->calque = malloc(sizeof(t_calque) * 1);
-  data->plan[0]->obj[0]->calque->pix = load_bitmap("clef.bmp");
-  if ((data->plan[0]->calque[0]->pix =
+  if ((PLAN->obj = bunny_malloc(sizeof(t_obj *) * 2)) == NULL ||
+      (PLAN->obj[0] = bunny_malloc(sizeof(t_obj) * 1)) == NULL ||
+      (PLAN->obj[0]->calque = bunny_malloc(sizeof(t_calque) * 1)) == NULL ||
+      (PLAN->obj[0]->calque->pix = load_bitmap("clef.bmp")) == NULL ||
+      (data->plan[0]->calque[0]->pix =
        load_bitmap("ressource/decor_2/decor2.bmp")) == NULL ||
       (data->plan[0]->calque[1]->pix =
        load_bitmap("ressource/decor_2/poutre2.bmp")) == NULL ||
@@ -173,17 +161,19 @@ t_data	*load_decor_2(t_data *data)
    return (data);
 }
 
-void	make_position_decor_2(t_data *data)
-{  
+int	make_position_decor_2(t_data *data)
+{
   data->plan[0]->calque[0]->x = 0;
   data->plan[0]->calque[0]->y = 0;
   data->plan[0]->calque[1]->x = 705;
   data->plan[0]->calque[1]->y = 580;
   data->plan[0]->calque[2]->x = -40;
   data->plan[0]->calque[2]->y = 0;
-  data->plan[0]->obj[0]->name = "clef";
-  data->plan[0]->obj[0]->desc = "desc de robin";
-  data->plan[0]->obj[0]->use = "desc d'edouard";
+  if ((PLAN->obj[0]->name = my_strcpy("clef")) == NULL ||
+      (PLAN->obj[0]->desc = my_strcpy("desc de robin")) == NULL ||
+      (data->plan[0]->obj[0]->use = my_strcpy("desc d'edouard")) == NULL)
+      return (-1);
   data->plan[0]->obj[0]->erase = 0;
   data->plan[0]->obj[0]->close = 0;
+  return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 23:10:22 2016 Voyevoda
+** Last update Sun Apr 17 23:14:48 2016 Voyevoda
 */
 
 #ifndef ADVENTURE_H_
@@ -57,6 +57,7 @@
 # define SCALE data->player->mov[CUR]->calque[MOV]->scale
 # define PLAN data->plan[0]
 # define CAL data->plan[0]->calque
+# define MOVI data->player->mov[i]
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -111,9 +112,6 @@ typedef struct	s_char
   t_move	**mov;
   float		coef[2];
   float		vec[2];
-  t_node	*cur;
-  t_node	*next;
-  t_node	*dest;
   int		cur_mov;
   int		mov_or_not;
   int		cur_node;
@@ -134,13 +132,6 @@ typedef struct	s_obj
   int		close;
 }		t_obj;
 
-typedef struct	s_chest
-{
-  t_calque	*calque;
-  t_obj		obj[4];
-  char		*desc;
-}		t_chest;
-
 typedef struct	s_pnj
 {
   t_calque	*calque;
@@ -158,7 +149,6 @@ typedef struct	s_plan
 {
   t_calque	**calque;
   t_obj		**obj;
-  t_chest	**chest;
   t_pnj		**pnj;
   t_node	**node;
   int		start_node;
@@ -191,7 +181,6 @@ typedef	struct		s_data
   t_bunny_window       	*win;
   t_bunny_position	*pos;
   t_bunny_pixelarray	*pix;
-  t_bunny_pixelarray	*pex;
   t_bunny_position	*mouse;
   t_plan		**plan;
   t_char		*player;
@@ -236,7 +225,7 @@ void			have_pos(t_data *);
 t_data			*load_decor_1(t_data *);
 void			make_position_decor_1(t_data *);
 t_data			*load_decor_2(t_data *);
-void			make_position_decor_2(t_data *);
+int			make_position_decor_2(t_data *);
 t_data			*malloc_and_load_perso(t_data *);
 void			change_clipable(t_bunny_pixelarray *, int);
 void			change_pos_perso(t_bunny_pixelarray *, int);
@@ -262,7 +251,7 @@ void	draw_board(t_data *data);
 void	calc_coef(float, float, t_bunny_position *, t_data *);
 void	move_perso(t_data *);
 
-void	load_node_1(t_data *);
+int	load_node_1(t_data *);
 int	check_click_pnj(t_data *data);
 int	check_click_obj(t_data *data);
 int	check_click_node(t_data *data);
@@ -276,7 +265,7 @@ int	find_diff_way(int, int, t_node **);
 t_bunny_position	calc_coord(t_bunny_position	*tmp,
 				   t_calque		*calque,
 				   int			dec);
-void	load_node_2(t_data *);
+int	load_node_2(t_data *);
 void	to_next_node(t_data *);
 void	tektext(t_bunny_pixelarray *out, t_text *text);
 t_text	*init_text();
