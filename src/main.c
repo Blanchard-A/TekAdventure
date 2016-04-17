@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 11:44:17 2016 edouard puillandre
+** Last update Sun Apr 17 15:12:24 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -72,7 +72,7 @@ t_bunny_response	click(t_bunny_event_state	state,
       /* move_perso(data); */
 
       /* printf("YEAH\n"); */
-      check_click(data);
+      check_click_bis(data);
       /* pos = bunny_get_mouse_position(); */
       printf("x = %i\ty = %i\n", data->mouse->x, data->mouse->y);
       /* if (data->id_plan == 0) */
