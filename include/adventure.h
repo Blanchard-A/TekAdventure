@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 15:40:19 2016 Alexandre Blanchard
+** Last update Sun Apr 17 16:23:46 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -52,6 +52,8 @@
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos
 # define SCALE data->player->mov[CUR]->calque[MOV]->scale
+# define PLAN data->plan[0]
+# define CAL data->plan[0]->calque
 
 # include <stdlib.h>
 # include <sys/types.h>
