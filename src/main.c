@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 20:03:34 2016 edouard puillandre
+** Last update Sun Apr 17 20:05:23 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -17,6 +17,7 @@ t_bunny_response	mainloop(t_data *data)
   /* load_decor_1(data);   */
   /* data->id_plan = 0; */
   /* envoi_to_copy(data); */
+  /* printf("player x = %f\n", data->player->x); */
   if (data->player->coef[0] == 0 && data->player->coef[1] == 0)
     {
       to_next_node(data);
@@ -31,6 +32,11 @@ t_bunny_response	mainloop(t_data *data)
       change_pos(data);
       change_pos_nuages(data);
       have_pos(data);
+    }
+  else if (data->id_plan == 1)
+    {
+      move_poteau(data);
+
     }
   envoi_to_copy(data);
   tektext(data->pix, data->text);

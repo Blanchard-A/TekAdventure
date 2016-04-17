@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 19:58:05 2016 edouard puillandre
+** Last update Sun Apr 17 20:08:09 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -129,7 +129,7 @@ typedef struct	s_obj
   char		*use;
   int		erase;
   int		id_calc;
-  int		node_close;
+  int		close;
 }		t_obj;
 
 /*coffre avec les objets présents (4 max) */
@@ -151,7 +151,7 @@ typedef struct	s_pnj
   char		*obj;
   t_obj		*give;
   int		id_calc;
-  int		node_close;
+  int		close;
 }		t_pnj;
 
 /*Structure d'un plan avec les calques, objets et node présent*/
@@ -283,5 +283,6 @@ void	to_next_node(t_data *);
 void	tektext(t_bunny_pixelarray *out, t_text *text);
 t_text	*init_text();
 char	*my_strcpy(char *str);
+void	move_poteau(t_data *);
 
 #endif /* !ADVENTURE_H_ */

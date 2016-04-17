@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 13:09:04 2016 Alexandre Blanchard
-** Last update Sun Apr 17 17:58:58 2016 Alexandre Blanchard
+** Last update Sun Apr 17 18:21:31 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -19,7 +19,6 @@ int	check_node(t_data *data)
 
   i = 0;
   j = 0;
-  printf("blablabla = %i\n", PLAN->node[data->player->cur_node]->type);
   if (PLAN->node[data->player->cur_node]->type == 1)
     {
       data->id_plan = 1;

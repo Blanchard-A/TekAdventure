@@ -1,4 +1,3 @@
-
 /*
 ** copy_in_pix.c for tekadv in /home/blanch_p/Infographie/gfx_tekadventure
 **
@@ -6,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Sun Apr 17 18:40:14 2016 edouard puillandre
+** Last update Sun Apr 17 20:06:15 2016 edouard puillandre
 */
 
 #include "adventure.h"

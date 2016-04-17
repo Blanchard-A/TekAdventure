@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Sat Apr 16 10:16:07 2016 edouard puillandre
-** Last update Sun Apr 17 19:47:27 2016 edouard puillandre
+** Last update Sun Apr 17 20:08:33 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -60,7 +60,7 @@ int	init_obj(t_obj **obj)
       obj[i]->calque->y = Y_OBJ + (i / (NB_OBJ / 2)) * (OBJ_HEIGHT + OBJ_STEP);
       obj[i]->name = NULL;
       obj[i]->desc = NULL;
-      obj[i]->node_close = 0;
+      obj[i]->close = 0;
     }
   obj[i] = NULL;
   return (0);
@@ -70,7 +70,6 @@ t_board		*my_init_board()
 {
   t_board	*board;
 
-  printf("&");
   if ((board = bunny_malloc(sizeof(*board))) == NULL ||
       (board->button =
        bunny_malloc(sizeof(*board->button) * (NB_BUTTON + 1))) == NULL ||
@@ -80,7 +79,6 @@ t_board		*my_init_board()
       (board->calque = bunny_malloc(sizeof(*board->calque))) == NULL ||
       (board->calque->pix = load_bitmap(BOARD_BMP)) == NULL)
     return (NULL);
-  printf("lol");
   board->calque->x_speed = 0;
   board->calque->y_speed = 0;
   board->calque->x_init = 0;
