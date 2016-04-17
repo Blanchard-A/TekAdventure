@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 14:58:29 2016 Alexandre Blanchard
+** Last update Sun Apr 17 17:08:39 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -37,10 +37,10 @@ t_data	*malloc_and_load_perso(t_data *data)
   i = 0;
   data->player = bunny_malloc(sizeof(t_char) * 1);
   data->player->mov = bunny_malloc(sizeof(t_move *) * 4);
-  data->player->cur_node = 0;
-  data->player->dest_node = 0;
-  data->player->x = 338;
-  data->player->y = 367;
+  data->player->cur_node = 1;
+  data->player->dest_node = 1;
+  data->player->x = 193;
+  data->player->y = 409;
   /* data->player->mov[0] = bunny_malloc(sizeof(t_move) * 4); */
   while (i < 4)
     {
@@ -65,11 +65,20 @@ t_data	*malloc_and_load_perso(t_data *data)
       change_clipable(data->player->mov[i]->calque[0]->pix, 12);
       while (j < 2)
 	{
-	  data->player->mov[i]->calque[j]->x = 338;
-	  data->player->mov[i]->calque[j]->x_init = 338;
+	  data->player->mov[i]->calque[j]->x = 193;
+	  data->player->mov[i]->calque[j]->x_init = 193;
+	  data->player->mov[i]->calque[j]->y = 409;
+	  data->player->mov[i]->calque[j]->y_init = 409;
+
+	  /* data->player->mov[i]->calque[j]->x = 193 - */
+	  /*   ((data->player->mov[i]->calque[j]->WIDTH / 2) * */
+	  /*    data->plan[0]->node[1]->scale) / 100; */
+	  /* data->player->mov[i]->calque[j]->x_init = 193 - */
+	  /*   ((data->player->mov[i]->calque[j]->WIDTH / 2) */
+	  /*    * data->plan[0]->node[1]->scale) / 100; */
 	  data->player->mov[i]->calque[j]->x_speed = 0;
-	  data->player->mov[i]->calque[j]->y = 367;
-	  data->player->mov[i]->calque[j]->y_init = 367;
+	  /* data->player->mov[i]->calque[j]->y = 409 - (data->player->mov[i]->calque[j]->HEIGHT * data->plan[0]->node[1]->scale / 100); */
+	  /* data->player->mov[i]->calque[j]->y_init = 409; */
 	  data->player->mov[i]->calque[j]->y_speed = 0;
 	  j++;
 	}

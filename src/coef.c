@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sat Apr 16 14:37:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 13:42:15 2016 Alexandre Blanchard
+** Last update Sun Apr 17 17:06:04 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -50,9 +50,11 @@ void	pos_perso(t_data *data)
   while (i < 4)
     {
       data->player->mov[i]->calque[0]->x = data->player->x;
+
       data->player->mov[i]->calque[0]->y = data->player->y;
-      
+
       data->player->mov[i]->calque[1]->x = data->player->x;
+
       data->player->mov[i]->calque[1]->y = data->player->y;
       i++;
     }

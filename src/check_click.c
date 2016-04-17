@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 16:31:12 2016 Alexandre Blanchard
-** Last update Sun Apr 17 15:53:32 2016 edouard puillandre
+** Last update Sun Apr 17 17:11:39 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -67,18 +67,19 @@ int	check_click_node(t_data *data)
   int	j;
   int	scale;
 
-  i =  - 1;
-  j = data->id_plan;
+  i = -1;
+  j = 0;
   while (data->plan[j]->node[++i] != NULL)
     {
       scale = data->plan[j]->node[i]->scale / 2;
+      printf("i = %i\n", i);
       if (data->mouse->x >= data->plan[j]->node[i]->pos.x - scale &&
 	  data->mouse->x <= data->plan[j]->node[i]->pos.x + scale &&
-	  data->mouse->x >= data->plan[j]->node[i]->pos.x - scale &&
-	  data->mouse->x <= data->plan[j]->node[i]->pos.x + scale)
+	  data->mouse->y >= data->plan[j]->node[i]->pos.y - scale &&
+	  data->mouse->y <= data->plan[j]->node[i]->pos.y + scale)
 	return (i);
     }
-  return (- 1);
+  return (-1);
 }
 
 int	check_click(t_data *data)

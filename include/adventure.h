@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 16:23:30 2016 edouard puillandre
+** Last update Sun Apr 17 17:12:00 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -54,6 +54,8 @@
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos
 # define SCALE data->player->mov[CUR]->calque[MOV]->scale
+# define PLAN data->plan[0]
+# define CAL data->plan[0]->calque
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -268,7 +270,7 @@ int	check_click_node(t_data *data);
 int	check_click_button(t_data *data);
 int	check_click_bis(t_data *data);
 
-int	*search_way(int, int, t_node **);
+int	*search_way(int, int, t_node **, int *);
 int	find_way(t_node *, t_node *);
 int	find_same_way(int, int, int, t_node **);
 int	find_diff_way(int, int, t_node **);

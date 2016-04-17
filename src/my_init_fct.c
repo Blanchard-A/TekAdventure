@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 14:57:08 2016 Alexandre Blanchard
+** Last update Sun Apr 17 15:24:13 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -86,7 +86,8 @@ t_data		*my_init_data()
   data->player->coef[0] = 0;
   data->player->coef[1] = 0;
   data->loop = 0;
-  data->player->chemin = NULL;
+  data->player->chemin = bunny_malloc(sizeof(int) * 11);
+  data->player->chemin[0] = -1;
   CUR = 0;
   MOV = 1;
   data->pos->x = PIX_X;
