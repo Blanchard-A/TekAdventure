@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sat Apr 16 12:30:01 2016 edouard puillandre
+** Last update Sun Apr 17 11:36:34 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -28,25 +28,27 @@
 # define ID_GIVE (3)
 # define ID_TALK (4)
 # define ID_LOOK (5)
-# define X_USE (55)
-# define Y_USE (740)
-# define X_GO (0)
-# define Y_GO (0)
-# define X_PICK (0)
-# define Y_PICK (0)
-# define X_GIVE (0)
-# define Y_GIVE (0)
-# define X_TALK (0)
-# define Y_TALK (0)
-# define X_LOOK (0)
-# define Y_LOOK (0)
-# define W_BUTTON (140)
-# define H_BUTTON (60)
+# define X_USE (40)
+# define Y_USE (732)
+# define X_GO (220)
+# define Y_GO (735)
+# define X_PICK (400)
+# define Y_PICK (733)
+# define X_GIVE (40)
+# define Y_GIVE (828)
+# define X_TALK (214)
+# define Y_TALK (830)
+# define X_LOOK (400)
+# define Y_LOOK (832)
+# define W_BUTTON (165)
+# define H_BUTTON (70)
 # define OBJ_WIDTH (85)
 # define OBJ_HEIGHT (70)
 # define OBJ_STEP (20)
 # define X_OBJ (595)
 # define Y_OBJ (740)
+# define BOARD_BMP "ressource/interface/interface_2.0.bmp"
+# define ABS(x) (((x) < 0) ? - (x) : (x))
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -69,9 +71,7 @@ typedef struct		s_calque
   float			x_speed; /* vitesse suivant x (peut être nulle)*/
   float			y;
   float			y_speed;
-  int			incr;
   int			scale;
-  int			id_calc;
 }			t_calque;
 
 /* rassemblement des infos d'une des animations*/
@@ -81,22 +81,6 @@ typedef struct		s_move
   int			div; /* nb image dans le sprite*/
   int			cur_pos; /* position courante */
 }			t_move;
-
-/*text avec position*/
-typedef struct		s_text
-{
-  t_bunny_position	*pos;
-  char			*str;
-}			t_text;
-
-/* défini l'échelle, la position et devant quel calque se trouve le move concerné (pnj / objet)*/
-typedef struct		s_pixplus
-{
-  t_move		*move;
-  t_bunny_position	*pos;
-  int			id_cal;
-  int			scale;
-}			t_pixplus;
 
 /* noeud de position*/
 typedef struct		s_node
@@ -117,6 +101,9 @@ typedef struct	s_char
   t_node	*next; /* node sur lequel va le perso */
   t_node	*dest; /* node de destination du perso */
   int		cur_mov; /*mouvement courant*/
+  int		id_calc;
+  float		x;
+  float		y;
 }		t_char;
 
 /*Objet avec indication + nom*/
@@ -124,8 +111,11 @@ typedef struct	s_obj
 {
   t_calque	*calque;
   char		*name;
-  t_text	*desc; /* description de l'objet */
-  int		(*fct)(data); /* action de l'objet en fonction de t_data */
+  char		*desc; /* description de l'objet */
+  char		*use;
+  int		erase;
+  int		id_calc;
+  t_node	*close;
 }		t_obj;
 
 /*coffre avec les objets présents (4 max) */
@@ -133,17 +123,21 @@ typedef struct	s_chest
 {
   t_calque	*calque;
   t_obj		obj[4];
-  t_text	*desc; /* description du coffre*/
+  char		*desc; /* description du coffre*/
 }		t_chest;
 
 /* Pnj avec 2 lignes de dialogues : une avant sans l'objet (obj) donné au pnj, l'autre, après. Parfois, l'objet give est donné aux joueurs*/
 typedef struct	s_pnj
 {
   t_move	*move;
-  t_text	**dial;
+  char		**dial;
+  char		*name;
+  char		*desc;
   int		cur_dial;
   char		*obj;
   t_obj		*give;
+  int		id_calc;
+  t_node	*close;
 }		t_pnj;
 
 /*Structure d'un plan avec les calques, objets et node présent*/
@@ -171,13 +165,6 @@ typedef struct		s_board
   int			sel;
 }			t_board;
 
-typedef struct	s_game
-{
-  time_t       	timer; /*timer avant la mort du perso*/
-  t_obj		*sel_obj; /* objet sélectionné */
-  int		action; /*action sélectionnée*/
-}		t_game;
-
 typedef	struct		s_data
 {
   t_bunny_window       	*win;
@@ -188,7 +175,7 @@ typedef	struct		s_data
   t_plan		**plan;
   t_char		*player;
   t_board		*board;
-  t_game		*game;
+  time_t		timer;
   int			id_plan; /*plan courant*/
   /* int		id_plan; /\*plan courant*\/ */
 }			t_data;
@@ -238,11 +225,7 @@ void			tekpixel(t_bunny_pixelarray	*pix,
 				 unsigned int		color);
 unsigned int		getpixel(t_bunny_pixelarray	*pix,
 				 t_bunny_position	*pos);
-void	to_pix_scale(t_bunny_pixelarray *dest,
-		     t_bunny_pixelarray	*src,
-		     t_bunny_position	*pos,
-		     int		scale);
-
+void			to_pix_scale(t_data *data, t_calque *calque);
 void	free_calque(t_data *);
 int	my_malloc_plan(t_data *, int);
 t_board	*my_init_board();
@@ -253,5 +236,7 @@ int	my_pick(t_data *);
 int	my_give(t_data *);
 int	my_talk(t_data *);
 int	my_look(t_data *);
+int	compare_to_col(t_color, t_color);
+void	draw_board(t_data *data);
 
 #endif /* !ADVENTURE_H_ */

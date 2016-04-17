@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Sat Apr 16 14:29:43 2016 edouard puillandre
+** Last update Sun Apr 17 11:10:37 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -39,30 +39,30 @@ int	compare_to_col(t_color color, t_color back_color)
   return (0);
 }
 
+/* void			copy_in_pix(t_calque *calque, t_data *data) */
+/* { */
+/*   int			i; */
+/*   t_bunny_position	pos; */
+/*   t_color		*color; */
+
+/*   i = 0; */
+/*   color = calque->pix->pixels; */
+/*   while (i < calque->pix->clipable.clip_width */
+/* 	 * calque->pix->clipable.clip_height) */
+/*     { */
+/*       if (compare_to_col(color[i], (t_color)BACK_COLOR) == -1) */
+/* 	{ */
+/* 	  pos.x = i % calque->pix->clipable.clip_width + calque->x; */
+/* 	  pos.y = i / calque->pix->clipable.clip_width + calque->y; */
+/* 	  if (pos.x >= 0 && pos.x <= WIN_X) */
+/* 	    tekpixel(data->pix, &pos, */
+/* 		     ((unsigned int *)calque->pix->pixels)[i]); */
+/* 	} */
+/*       i++; */
+/*     } */
+/* } */
+
 void			copy_in_pix(t_calque *calque, t_data *data)
-{
-  int			i;
-  t_bunny_position	pos;
-  t_color		*color;
-
-  i = 0;
-  color = calque->pix->pixels;
-  while (i < calque->pix->clipable.clip_width
-	 * calque->pix->clipable.clip_height)
-    {
-      if (compare_to_col(color[i], (t_color)BACK_COLOR) == -1)
-	{
-	  pos.x = i % calque->pix->clipable.clip_width + calque->x;
-	  pos.y = i / calque->pix->clipable.clip_width + calque->y;
-	  if (pos.x >= 0 && pos.x <= WIN_X)
-	    tekpixel(data->pix, &pos,
-		     ((unsigned int *)calque->pix->pixels)[i]);
-	}
-      i++;
-    }
-}
-
-void			copy_in_pix_bis(t_calque *calque, t_data *data)
 {
   t_bunny_position	tmp;
   t_bunny_position	get;
@@ -70,21 +70,24 @@ void			copy_in_pix_bis(t_calque *calque, t_data *data)
   t_color		col;
 
   tmp.y = - 1;
-  while (++tmp.y < calque->pix->clipable.clip_height)
-    {
-      tmp.x = - 1;
-      while (++tmp.x < calque->pix->clipable.clip_width)
-	{
-	  get.x = tmp.x + calque->pix->clipable.clip_x_position;
-	  get.y = tmp.y + calque->pix->clipable.clip_y_position;
-	  put.x = tmp.x + (int) calque->x;
-	  put.y = tmp.y + (int) calque->y;
-	  col.full = getpixel(calque->pix, &get);
-	  if (compare_to_col(col, (t_color)BACK_COLOR) == - 1)
-	    if (put.x >= 0 && put.x <= WIN_X)
-	      tekpixel(data->pix, &put, col.full);
-	}
-    }
+  if (calque->scale < 100)
+    to_pix_scale(data, calque);
+  else
+    while (++tmp.y < calque->pix->clipable.clip_height)
+      {
+	tmp.x = - 1;
+	while (++tmp.x < calque->pix->clipable.clip_width)
+	  {
+	    get.x = tmp.x + calque->pix->clipable.clip_x_position;
+	    get.y = tmp.y + calque->pix->clipable.clip_y_position;
+	    put.x = tmp.x + (int) calque->x;
+	    put.y = tmp.y + (int) calque->y;
+	    col.full = getpixel(calque->pix, &get);
+	    if (compare_to_col(col, (t_color)BACK_COLOR) == - 1)
+	      if (put.x >= 0 && put.x <= WIN_X)
+		tekpixel(data->pix, &put, col.full);
+	  }
+      }
 }
 
 void	envoi_to_copy(t_data *data)
@@ -99,9 +102,13 @@ void	envoi_to_copy(t_data *data)
   /*   } */
   while (data->plan[0]->calque[i] != NULL)
     {
-      copy_in_pix_bis(data->plan[0]->calque[i], data);
+      data->plan[0]->calque[i]->scale = 100;
+      copy_in_pix(data->plan[0]->calque[i], data);
+      data->player->mov[0]->calque[0]->scale = 50;
+      draw_board(data);
       if (i == 5)
-      	copy_in_pix_bis(data->player->mov[0]->calque[0], data);
+      	/* copy_in_pix_bis(data->player->mov[0]->calque[0], data); */
+	copy_in_pix(data->player->mov[0]->calque[0], data);
       i++;
     }
 

@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Sat Apr 16 10:16:07 2016 edouard puillandre
-** Last update Sat Apr 16 12:35:50 2016 edouard puillandre
+** Last update Sun Apr 17 11:19:42 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -54,11 +54,13 @@ int	init_obj(t_obj **obj)
   while (++i < NB_OBJ)
     {
       if ((obj[i] = bunny_malloc(sizeof(*obj[i]))) == NULL ||
-	  (obj[i]->calque = bunny_malloc(sizeof(*obj[i]->calque))) == NULL ||
-	  (obj[i]->desc = bunny_malloc(sizeof(*obj[i]->desc))) == NULL)
+	  (obj[i]->calque = bunny_malloc(sizeof(*obj[i]->calque))) == NULL)
 	return (- 1);
       obj[i]->calque->x = X_OBJ + (i % (NB_OBJ / 2)) * (OBJ_WIDTH + OBJ_STEP);
       obj[i]->calque->y = Y_OBJ + (i / (NB_OBJ / 2)) * (OBJ_HEIGHT + OBJ_STEP);
+      obj[i]->name = NULL;
+      obj[i]->desc = NULL;
+      obj[i]->close = NULL;
     }
   obj[i] = NULL;
   return (0);
@@ -68,12 +70,24 @@ t_board		*my_init_board()
 {
   t_board	*board;
 
+  printf("&");
   if ((board = bunny_malloc(sizeof(*board))) == NULL ||
       (board->button =
        bunny_malloc(sizeof(*board->button) * (NB_BUTTON + 1))) == NULL ||
       (board->obj =
        bunny_malloc(sizeof(*board->obj) * (NB_OBJ + 1))) == NULL ||
-      init_button(board->button) == - 1 || init_obj(board->obj) == - 1)
+      init_button(board->button) == - 1 || init_obj(board->obj) == - 1 ||
+      (board->calque = bunny_malloc(sizeof(*board->calque))) == NULL ||
+      (board->calque->pix = load_bitmap(BOARD_BMP)) == NULL)
     return (NULL);
+  printf("lol");
+  board->calque->x_speed = 0;
+  board->calque->y_speed = 0;
+  board->calque->x_init = 0;
+  board->calque->y_init = 0;
+  board->calque->x = 0;
+  board->calque->y = 720;
+  board->calque->scale = 100;
+  board->sel = ID_GO;
   return (board);
 }
