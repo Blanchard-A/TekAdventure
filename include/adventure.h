@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 17:16:37 2016 Alexandre Blanchard
+** Last update Sun Apr 17 18:16:28 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -13,6 +13,8 @@
 
 # define WIN_X (1024)
 # define WIN_Y (920)
+# define COL_FONT (16)
+# define ROW_FONT (16)
 # define INIT_COLOR (0x00000000)
 # define BACK_COLOR (0xFFCC33FF)
 # define WIN_NAME "Window"
@@ -86,6 +88,13 @@ typedef struct		s_move
   int			div; /* nb image dans le sprite*/
   int			cur_pos; /* position courante */
 }			t_move;
+
+typedef struct		s_text
+{
+  t_bunny_pixelarray	*font;
+  t_bunny_position	pos;
+  char			*str;
+}
 
 /* noeud de position*/
 typedef struct		s_node
