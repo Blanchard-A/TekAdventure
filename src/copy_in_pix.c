@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Fri Apr 15 18:44:12 2016 edouard puillandre
+** Last update Sun Apr 17 09:33:38 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -48,6 +48,7 @@ void			copy_in_pix(t_calque *calque, t_data *data)
   i = 0;
   color = calque->pix->pixels;
   while (i < calque->pix->clipable.clip_width
+
 	 * calque->pix->clipable.clip_height)
     {
       if (compare_to_col(color[i], (t_color)BACK_COLOR) == -1)
@@ -100,8 +101,8 @@ void	envoi_to_copy(t_data *data)
   while (data->plan[0]->calque[i] != NULL)
     {
       copy_in_pix_bis(data->plan[0]->calque[i], data);
-      if (i == 5)
-      	copy_in_pix_bis(data->player->mov[0]->calque[0], data);
+      if (i == 4)
+      	copy_in_pix_bis(data->player->mov[CUR]->calque[MOV], data);
       i++;
     }
 

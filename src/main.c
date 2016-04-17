@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sat Apr 16 14:53:56 2016 Alexandre Blanchard
+** Last update Sun Apr 17 10:41:48 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -13,7 +13,7 @@
 #include <stdio.h>
 
 t_bunny_response	mainloop(t_data *data)
-{  
+{
   /* load_decor_1(data);   */
   /* data->id_plan = 0; */
   /* envoi_to_copy(data); */
@@ -25,10 +25,11 @@ t_bunny_response	mainloop(t_data *data)
       have_pos(data);
     }
   envoi_to_copy(data);
+  move_perso(data);
 
   /* printf("ok\n"); */
   /* have_pos(data); */
-  change_pos_perso(data->player->mov[0]->calque[0]->pix, data->loop);
+  change_pos_perso(data->player->mov[CUR]->calque[0]->pix, data->loop);
   bunny_blit(&data->win->buffer, &data->pix->clipable, data->pos);
   /* data->loop++; */
   /* if (data->loop == 12) */
@@ -60,18 +61,20 @@ t_bunny_response	click(t_bunny_event_state	state,
   (void) key;
   
   /* pos = bunny_get_mouse_position(); */
+
   if (state == GO_DOWN)
     {
-      data->player->coef = calc_coef(data->player->mov[0]->calque[0]->x,
-				     data->player->mov[0]->calque[0]->y,
-				     data->mouse);
+      calc_coef(data->player->mov[0]->calque[0]->x,
+		data->player->mov[0]->calque[0]->y,
+		data->mouse,
+		data);
 
-      move_perso(data);
+      /* move_perso(data); */
 
       /* printf("YEAH\n"); */
-      /* check_click(data); */
+      check_click(data);
       /* pos = bunny_get_mouse_position(); */
-      /* printf("x = %i\ty = %i\n", pos->x, pos->y); */
+      printf("x = %i\ty = %i\n", data->mouse->x, data->mouse->y);
       /* if (data->id_plan == 0) */
       /* 	{ */
       /* 	  free_calque(data); */
@@ -114,6 +117,7 @@ int	main(int ac, char **av, char **env)
     return (1);
   if ((data = my_init_data()) == NULL)
     return (1);
+  my_init_board();
   bunny_set_loop_main_function((t_bunny_loop)mainloop);
   bunny_set_key_response((t_bunny_key)escape);
   bunny_set_move_response((t_bunny_move)move);

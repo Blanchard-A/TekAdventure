@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 12:17:28 2016 Alexandre Blanchard
-** Last update Tue Apr 12 15:28:44 2016 edouard puillandre
+** Last update Sat Apr 16 15:13:55 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -99,6 +99,32 @@ void			to_pix_scale(t_bunny_pixelarray	*dest,
 	  get[0] = ((float) tmp.x * 100) / (float) scale;
 	  get[1] = ((float) tmp.y * 100) / (float) scale;
 	  tekpixel(dest, &drw, col_scale(src, get, scale));
+	}
+    }
+}
+
+void			to_pix_scale_bis(t_data *data, t_calque *calque)
+{
+  int			width;
+  int			height;
+  t_bunny_position	drw;
+  float			get[2];
+  t_bunny_position	tmp;
+
+  width = calque->pix->clipable.buffer.width * calque->scale / 100;
+  height = calque->pix->clipable.buffer.height * calque->scale / 100;
+  tmp.x = 0;
+  while (++tmp.x < width)
+    {
+      tmp.y = 0;
+      while (++tmp.y < height)
+	{
+	  drw.x = tmp.x + (int) calque->x;
+	  drw.y = tmp.y + (int) calque->y;
+	  get[0] = ((float) tmp.x * 100) / (float) calque->scale;
+	  get[1] = ((float) tmp.y * 100) / (float) calque->scale;
+	  tekpixel(data->pix, &drw,
+		   col_scale(calque->pix, get, calque->scale));
 	}
     }
 }

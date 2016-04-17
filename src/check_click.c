@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Fri Apr 15 16:31:12 2016 Alexandre Blanchard
-** Last update Fri Apr 15 17:21:36 2016 Alexandre Blanchard
+** Last update Sun Apr 17 10:42:13 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -32,11 +32,25 @@ void	print_square(int x_min, int x_max, int y_min, int y_max, t_data *data)
 
 void	check_click(t_data *data)
 {
-  if ((data->mouse->x > 42 && data->mouse->x < 207) &&
-      (data->mouse->y > 733 && data->mouse->y < 807))
+  int	i;
+
+  i = 0;
+  while (data->plan[0]->node[i] != NULL)
     {
-      printf("UTILISER\n");
+      if (data->mouse->x >= data->plan[0]->node[i]->pos.x - 30
+	  && data->mouse->x <= data->plan[0]->node[i]->pos.x + 30 &&
+	  data->mouse->y >= data->plan[0]->node[i]->pos.y - 30
+	  && data->mouse->y <= data->plan[0]->node[i]->pos.y + 30)
+	{
+	  printf("C'est le Node %i\n", i);
+	}
+      i++;
     }
+  /* if ((data->mouse->x > 42 && data->mouse->x < 207) && */
+  /*     (data->mouse->y > 733 && data->mouse->y < 807)) */
+  /*   { */
+  /*     printf("UTILISER\n"); */
+  /*   } */
   
   
   
