@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 21:00:37 2016 Alexandre Blanchard
+** Last update Sun Apr 17 21:07:37 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -50,6 +50,7 @@
 # define X_OBJ (595)
 # define Y_OBJ (740)
 # define BOARD_BMP "ressource/interface/interface_2.0.bmp"
+# define FONT_BMP "ressource/interface/fonte.bmp"
 # define ABS(x) (((x) < 0) ? - (x) : (x))
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos
@@ -89,13 +90,6 @@ typedef struct		s_move
   int			div; /* nb image dans le sprite*/
   int			cur_pos; /* position courante */
 }			t_move;
-
-typedef struct		s_text
-{
-  t_bunny_pixelarray	*font;
-  t_bunny_position	pos;
-  char			*str;
-}			t_text;
 
 /* noeud de position*/
 typedef struct		s_node
@@ -158,7 +152,7 @@ typedef struct	s_pnj
   char		*obj;
   t_obj		*give;
   int		id_calc;
-  t_node	*close;
+  int		close;
 }		t_pnj;
 
 /*Structure d'un plan avec les calques, objets et node présent*/
@@ -186,6 +180,13 @@ typedef struct		s_board
   int			sel;
 }			t_board;
 
+typedef struct		s_text
+{
+  t_bunny_pixelarray	*font;
+  t_bunny_position	pos;
+  char			*str;
+}			t_text;
+
 typedef	struct		s_data
 {
   int			loop;
@@ -197,6 +198,7 @@ typedef	struct		s_data
   t_plan		**plan;
   t_char		*player;
   t_board		*board;
+  t_text		*text;
   time_t		timer;
   int			id_plan; /*plan courant*/
   /* int		id_plan; /\*plan courant*\/ */
@@ -279,6 +281,9 @@ t_bunny_position	calc_coord(t_bunny_position	*tmp,
 				   int			dec);
 int	load_node_2(t_data *);
 void	to_next_node(t_data *);
+void	tektext(t_bunny_pixelarray *out, t_text *text);
+t_text	*init_text();
+char	*my_strcpy(char *str);
 void	move_poteau(t_data *);
 
 #endif /* !ADVENTURE_H_ */

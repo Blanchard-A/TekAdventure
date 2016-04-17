@@ -1,11 +1,11 @@
 /*
 ** go.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
-** 
+**
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
-** 
+**
 ** Started on  Sun Apr 17 12:10:27 2016 Alexandre Blanchard
-** Last update Sun Apr 17 16:04:39 2016 Alexandre Blanchard
+** Last update Sun Apr 17 19:28:56 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -21,7 +21,7 @@ int     my_go(t_data *data)
   if (data->player->chemin[0] != -1)
     return (0);
   if ((node = check_click_node(data)) >= 0)
-    {      
+    {
       if (node != 10)
 	{
 	  data->player->chemin = search_way(data->player->cur_node,
@@ -33,7 +33,7 @@ int     my_go(t_data *data)
 	    }
 	  data->player->dest_node = data->player->chemin[i - 1];
 	}
-    }  
+    }
   return (0);
 }
 
