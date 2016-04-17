@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 23:19:00 2016 edouard puillandre
+** Last update Sun Apr 17 23:34:44 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -65,7 +65,7 @@ t_bunny_response	move(const t_bunny_position	*relative,
   return (GO_ON);
 }
 
-int	main(int ac, char **av, char **env)
+int		main(int ac, char **av, char **env)
 {
   t_data	*data;
   int		nb;
