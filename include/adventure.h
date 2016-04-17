@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 19:46:53 2016 Alexandre Blanchard
+** Last update Sun Apr 17 21:00:37 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -56,6 +56,7 @@
 # define SCALE data->player->mov[CUR]->calque[MOV]->scale
 # define PLAN data->plan[0]
 # define CAL data->plan[0]->calque
+# define MOVI data->player->mov[i]
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -236,7 +237,7 @@ void			have_pos(t_data *);
 t_data			*load_decor_1(t_data *);
 void			make_position_decor_1(t_data *);
 t_data			*load_decor_2(t_data *);
-void			make_position_decor_2(t_data *);
+int			make_position_decor_2(t_data *);
 t_data			*malloc_and_load_perso(t_data *);
 void			change_clipable(t_bunny_pixelarray *, int);
 void			change_pos_perso(t_bunny_pixelarray *, int);
@@ -262,7 +263,7 @@ void	draw_board(t_data *data);
 void	calc_coef(float, float, t_bunny_position *, t_data *);
 void	move_perso(t_data *);
 
-void	load_node_1(t_data *);
+int	load_node_1(t_data *);
 int	check_click_pnj(t_data *data);
 int	check_click_obj(t_data *data);
 int	check_click_node(t_data *data);
@@ -276,7 +277,7 @@ int	find_diff_way(int, int, t_node **);
 t_bunny_position	calc_coord(t_bunny_position	*tmp,
 				   t_calque		*calque,
 				   int			dec);
-void	load_node_2(t_data *);
+int	load_node_2(t_data *);
 void	to_next_node(t_data *);
 void	move_poteau(t_data *);
 
