@@ -5,30 +5,33 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 10:24:01 2016 Alexandre Blanchard
-** Last update Sun Apr 17 20:01:58 2016 Alexandre Blanchard
+** Last update Sun Apr 17 20:44:16 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
 
-void	malloc_node_1(t_data *data)
+int	malloc_node_1(t_data *data)
 {
   int	i;
 
   i = 0;
-  data->plan[0]->node = malloc(sizeof(t_node *) * 11);
+  if ((data->plan[0]->node = bunny_malloc(sizeof(t_node *) * 11)) == NULL)
+    return (-1);
   while (i < 10)
     {
-      data->plan[0]->node[i] = malloc(sizeof(t_node) * 1);
-      data->plan[0]->node[i]->way = malloc(sizeof(int) * 3);
+      if ((PLAN->node[i] = bunny_malloc(sizeof(t_node) * 1)) == NULL ||
+	  (PLAN->node[i]->way = bunny_malloc(sizeof(int) * 3)) == NULL)
+	return (-1);
       i++;
     }
   data->plan[0]->node[10] = NULL;
+  return (0);
 }
 
-void	load_node_1(t_data *data)
+int	load_node_1(t_data *data)
 {
-  malloc_node_1(data);
-  
+  if (malloc_node_1(data) == -1)
+    return (-1);
   data->plan[0]->node[0]->pos.x = 372;
   data->plan[0]->node[0]->pos.y = 350;
   data->plan[0]->node[0]->way[0] = 1;
@@ -136,27 +139,31 @@ void	load_node_1(t_data *data)
   /* data->plan[0]->node[10]->way[2] = -1; */
   /* data->plan[0]->node[10]->pos_way = -1; */
   /* data->plan[0]->node[10]->scale = 25; */
+  return (0);
 }
 
-void	malloc_node_2(t_data *data)
+int	malloc_node_2(t_data *data)
 {
   int	i;
 
   i = 0;
-  data->plan[0]->node = malloc(sizeof(t_node *) * 4);
+  if ((data->plan[0]->node = bunny_malloc(sizeof(t_node *) * 4)) == NULL)
+    return (-1);
   while (i < 3)
     {
-      data->plan[0]->node[i] = malloc(sizeof(t_node) * 1);
-      data->plan[0]->node[i]->way = malloc(sizeof(int) * 3);
+      if ((PLAN->node[i] = bunny_malloc(sizeof(t_node) * 1)) == NULL ||
+	  (PLAN->node[i]->way = bunny_malloc(sizeof(int) * 3)) == NULL)
+	return (-1);
       i++;
     }
   data->plan[0]->node[3] = NULL;
+  return (0);
 }
 
-void	load_node_2(t_data *data)
+int	load_node_2(t_data *data)
 {
-  malloc_node_1(data);
-  
+  if (malloc_node_2(data) == -1)
+    return (-1);
   data->plan[0]->node[0]->pos.x = 422;
   data->plan[0]->node[0]->pos.y = 616;
   data->plan[0]->node[0]->way[0] = 1;
@@ -186,4 +193,5 @@ void	load_node_2(t_data *data)
   data->plan[0]->node[2]->scale = 100;
   data->plan[0]->node[2]->id_cal = 0;
   data->plan[0]->node[2]->type = 0;
+  return (0);
 }
