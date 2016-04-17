@@ -1,4 +1,3 @@
-
 /*
 ** copy_in_pix.c for tekadv in /home/blanch_p/Infographie/gfx_tekadventure
 **
@@ -6,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Sun Apr 17 18:17:54 2016 edouard puillandre
+** Last update Sun Apr 17 18:58:12 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -109,7 +108,7 @@ void	envoi_to_copy(t_data *data)
 	data->plan[0]->node[data->player->cur_node]->scale;
       /* printf("%d\n", i); */
       if (i == data->plan[0]->node[data->player->cur_node]->id_cal)
-	copy_in_pix(data->player->mov[CUR]->calque[MOV], data);
+	copy_in_pix(data->player->mov[CUR]->calque[MOV], data, 1);
       i++;
     }
 

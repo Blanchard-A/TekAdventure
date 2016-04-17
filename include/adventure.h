@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 18:18:31 2016 edouard puillandre
+** Last update Sun Apr 17 19:46:53 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -135,7 +135,7 @@ typedef struct	s_obj
   char		*use;
   int		erase;
   int		id_calc;
-  t_node	*close;
+  int		close;
 }		t_obj;
 
 /*coffre avec les objets présents (4 max) */
@@ -278,5 +278,6 @@ t_bunny_position	calc_coord(t_bunny_position	*tmp,
 				   int			dec);
 void	load_node_2(t_data *);
 void	to_next_node(t_data *);
+void	move_poteau(t_data *);
 
 #endif /* !ADVENTURE_H_ */
