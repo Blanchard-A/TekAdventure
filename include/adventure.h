@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 20:08:09 2016 edouard puillandre
+** Last update Sun Apr 17 20:32:04 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -108,9 +108,6 @@ typedef struct	s_char
   t_move	**mov; /* tableau des mouvements*/
   float		coef[2];
   float		vec[2];
-  t_node	*cur; /* node sur lequel est le perso */
-  t_node	*next; /* node sur lequel va le perso */
-  t_node	*dest; /* node de destination du perso */
   int		cur_mov; /*mouvement courant*/
   int		mov_or_not;
   int		cur_node; /*Node sur lequel le perso se trouve */
@@ -132,14 +129,6 @@ typedef struct	s_obj
   int		close;
 }		t_obj;
 
-/*coffre avec les objets présents (4 max) */
-typedef struct	s_chest
-{
-  t_calque	*calque;
-  t_obj		obj[4];
-  char		*desc; /* description du coffre*/
-}		t_chest;
-
 /* Pnj avec 2 lignes de dialogues : une avant sans l'objet (obj) donné au pnj, l'autre, après. Parfois, l'objet give est donné aux joueurs*/
 typedef struct	s_pnj
 {
@@ -159,7 +148,6 @@ typedef struct	s_plan
 {
   t_calque	**calque;
   t_obj		**obj;
-  t_chest	**chest;
   t_pnj		**pnj;
   t_node	**node;
   int		start_node; /*node de départ: peut changer par les déplacement du personnage*/
@@ -192,15 +180,13 @@ typedef	struct		s_data
   t_bunny_window       	*win;
   t_bunny_position	*pos;
   t_bunny_pixelarray	*pix;
-  t_bunny_pixelarray	*pex;
   t_bunny_position	*mouse;
   t_plan		**plan;
   t_char		*player;
   t_board		*board;
   t_text		*text;
   time_t		timer;
-  int			id_plan; /*plan courant*/
-  /* int		id_plan; /\*plan courant*\/ */
+  int			id_plan;
 }			t_data;
 
 typedef struct s_header

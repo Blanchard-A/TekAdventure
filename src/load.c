@@ -1,32 +1,16 @@
 /*
 ** load.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
-** 
+**
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
-** 
+**
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 20:00:29 2016 Alexandre Blanchard
+** Last update Sun Apr 17 20:59:49 2016 edouard puillandre
 */
 
 #include "adventure.h"
 
 #include <stdio.h>
-
-void	free_calque(t_data *data)
-{
-  int	i;
-
-  i = 0;
-  while (data->plan[0]->calque[i] != NULL)
-    {
-      bunny_delete_clipable(&data->plan[0]->calque[i]->pix->clipable);
-      bunny_free(data->plan[0]->calque[i]);
-      i++;      
-    }
-  bunny_free(data->plan[0]->calque);
-  bunny_free(data->plan[0]);  
-  bunny_free(data->plan);
-}
 
 t_data	*malloc_and_load_perso(t_data *data)
 {
@@ -214,7 +198,7 @@ t_data	*load_decor_2(t_data *data)
 }
 
 void	make_position_decor_2(t_data *data)
-{  
+{
   data->plan[0]->calque[0]->x = 0;
   data->plan[0]->calque[0]->y = 0;
   data->plan[0]->calque[1]->x = 705;
