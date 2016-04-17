@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 21:44:48 2016 edouard puillandre
+** Last update Sun Apr 17 22:37:50 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -51,6 +51,7 @@
 # define Y_OBJ (740)
 # define BOARD_BMP "ressource/interface/interface_2.0.bmp"
 # define FONT_BMP "ressource/interface/fonte.bmp"
+# define CONFIG "ressource/ini/configuration.ini"
 # define ABS(x) (((x) < 0) ? - (x) : (x))
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos
@@ -259,11 +260,13 @@ t_bunny_position	calc_coord(t_bunny_position	*tmp,
 				   t_calque		*calque,
 				   int			dec);
 int	load_node_2(t_data *);
-void	to_next_node(t_data *);
+int	to_next_node(t_data *);
 void	tektext(t_bunny_pixelarray *out, t_text *text);
 t_text	*init_text();
 char	*my_strcpy(char *str);
 void	move_poteau(t_data *);
 void	my_free_board(t_board *);
+int	bunny_set_max_ram();
+int	my_getnbr(const char *str);
 
 #endif /* !ADVENTURE_H_ */

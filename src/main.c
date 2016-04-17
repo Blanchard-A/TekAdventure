@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 23:02:27 2016 Voyevoda
+** Last update Sun Apr 17 22:14:56 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -13,7 +13,8 @@
 t_bunny_response	mainloop(t_data *data)
 {
   if (data->player->coef[0] == 0 && data->player->coef[1] == 0)
-    to_next_node(data);
+    if (to_next_node(data) == - 1)
+      return (EXIT_ON_ERROR);
   if (data->player->coef[0] != 0 && data->player->coef[1] != 0)
     move_perso(data);
   if (data->id_plan == 0)

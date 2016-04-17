@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 23:13:31 2016 Voyevoda
+** Last update Sun Apr 17 23:00:11 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -45,8 +45,11 @@ int		my_malloc_plan(t_data *data, int nb_calc)
 t_data		*my_init_data()
 {
   t_data	*data;
+  int		nb;
 
-  set_max_heap_size(50);
+  if ((nb = bunny_set_max_ram()) == - 1)
+    return (NULL);
+  set_max_heap_size(nb);
   if ((data = bunny_malloc(sizeof(t_data))) == NULL ||
       (my_malloc_plan(data, 8) != 0) ||
       (data->pix = bunny_new_pixelarray(WIN_X, WIN_Y)) == NULL ||
