@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:24:45 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:28:40 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -87,7 +87,7 @@ void	make_position_decor_1(t_data *data)
   data->plan[0]->calque[5]->y_speed = 0;
   data->plan[0]->calque[6]->x_speed = -0.5;
   data->plan[0]->calque[6]->y_speed = 0.5;
-  data->plan[0]->pnj[0]->name = my_strcpy("Le Vieux");;
+  data->plan[0]->pnj[0]->name = my_strcpy("Le Vieux");
   data->plan[0]->pnj[0]->desc = my_strcpy("desc de robin");
   data->plan[0]->pnj[0]->cur_dial = 0;
   data->plan[0]->pnj[0]->obj = my_strcpy("clef");
