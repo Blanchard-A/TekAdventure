@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 23:00:11 2016 edouard puillandre
+** Last update Sun Apr 17 23:13:05 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -42,46 +42,36 @@ int		my_malloc_plan(t_data *data, int nb_calc)
   return (0);
 }
 
+void	my_init_value(t_data *data)
+{
+  data->id_plan = 0;
+  data->player->vec[0] = 0;
+  data->player->vec[1] = 0;
+  data->player->coef[0] = 0;
+  data->player->coef[1] = 0;
+  data->loop = 0;
+  data->player->chemin[0] = -1;
+  data->pos->x = PIX_X;
+  data->pos->x = PIX_Y;
+  data->mouse = (t_bunny_position *) bunny_get_mouse_position();
+}
+
 t_data		*my_init_data()
 {
   t_data	*data;
-  int		nb;
 
-  if ((nb = bunny_set_max_ram()) == - 1)
-    return (NULL);
-  set_max_heap_size(nb);
   if ((data = bunny_malloc(sizeof(t_data))) == NULL ||
       (my_malloc_plan(data, 8) != 0) ||
       (data->pix = bunny_new_pixelarray(WIN_X, WIN_Y)) == NULL ||
       (data->win = bunny_start(WIN_X, WIN_Y, false, WIN_NAME)) == NULL ||
       (data->pos = bunny_malloc(sizeof(t_bunny_position))) == NULL ||
       (data->board = my_init_board()) == NULL ||
-      (data->text = init_text()) == NULL)
-    {
-      return (NULL);
-    }
-  data->id_plan = 0;
-  if (data->id_plan == 0)
-      if (load_decor_1(data) == NULL || load_node_1(data) == -1)
-	return (NULL);
-  if (data->id_plan == 1)
-    if (load_decor_2(data) == NULL || load_node_2(data) == -1)
-      return (NULL);
-  if (malloc_and_load_perso(data) == NULL)
+      (data->text = init_text()) == NULL ||
+      load_decor_1(data) == NULL || load_node_1(data) == -1 ||
+      malloc_and_load_perso(data) == NULL ||
+      (data->player->chemin = bunny_malloc(sizeof(int) * 11)) == NULL)
     return (NULL);
-  data->player->vec[0] = 0;
-  data->player->vec[1] = 0;
-  data->player->coef[0] = 0;
-  data->player->coef[1] = 0;
-  data->loop = 0;
-  if ((data->player->chemin = bunny_malloc(sizeof(int) * 11)) == NULL)
-    return (NULL);
-  data->player->chemin[0] = -1;
-  CUR = 0;
-  MOV = 1;
-  data->pos->x = PIX_X;
-  data->pos->x = PIX_Y;
-  data->mouse = (t_bunny_position *) bunny_get_mouse_position();
+  my_init_value(data);
 #ifdef DEBUG
   write(1, "INIT: OK\n", 9);
 #endif

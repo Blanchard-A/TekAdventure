@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 23:02:05 2016 edouard puillandre
+** Last update Sun Apr 17 23:16:46 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -52,7 +52,6 @@ t_bunny_response	click(t_bunny_event_state	state,
 
   if (state == GO_DOWN)
     {
-      my_go(data);
       check_click_bis(data);
     }
   return (GO_ON);
@@ -69,14 +68,16 @@ t_bunny_response	move(const t_bunny_position	*relative,
 int	main(int ac, char **av, char **env)
 {
   t_data	*data;
+  int		nb;
 
   (void) ac;
   (void) av;
 #ifdef	DEBUG
   memory_check = 1;
 #endif
-  if (*env == NULL)
+  if (*env == NULL || (nb = bunny_set_max_ram()) == - 1)
     return (1);
+  set_max_heap_size(nb);
   if ((data = my_init_data()) == NULL)
     return (1);
   bunny_set_loop_main_function((t_bunny_loop)mainloop);
