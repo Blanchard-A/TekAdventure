@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 23:02:27 2016 Voyevoda
+** Last update Sun Apr 17 22:57:23 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -84,7 +84,7 @@ int	main(int ac, char **av, char **env)
   bunny_set_click_response((t_bunny_click)click);
   if (bunny_loop(data->win, 90, data) == EXIT_ON_ERROR)
     return (1);
-#ifdef	DEBUG
+ #ifdef	DEBUG
   write(1, "STATUS: OK\n", 11);
 #endif
   return (0);

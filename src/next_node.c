@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 13:09:04 2016 Alexandre Blanchard
-** Last update Sun Apr 17 22:59:25 2016 Voyevoda
+** Last update Sun Apr 17 23:56:41 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -72,10 +72,7 @@ int	check_node(t_data *data)
 	}
       data->player->cur_node = 1;
       data->player->dest_node = 1;
-
     }
-  
-  
   return (0);
 }
 
@@ -89,7 +86,7 @@ void	to_next_node(t_data *data)
       data->player->mov[CUR]->cur_pos = 1;
       check_node(data);
       data->player->chemin[0] = -1;
-      return ;
+      return;
     }
   while (data->player->chemin[i] != data->player->cur_node)
     {

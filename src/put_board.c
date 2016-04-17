@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Sun Apr 17 10:44:41 2016 edouard puillandre
-** Last update Sun Apr 17 17:59:08 2016 edouard puillandre
+** Last update Sun Apr 17 23:57:21 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -36,7 +36,7 @@ void	draw_board(t_data *data)
 
   i = - 1;
   copy_in_pix(data->board->calque, data, 0);
-  while ( data->board->obj[++i] != NULL)
+  while (data->board->obj[++i] != NULL)
     if (data->board->obj[i]->name != NULL)
       copy_in_pix(data->board->obj[i]->calque, data, 0);
   draw_square(data->board->button[data->board->sel], data);
