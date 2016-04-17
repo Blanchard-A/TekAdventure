@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 16:31:12 2016 Alexandre Blanchard
-** Last update Sun Apr 17 15:13:38 2016 edouard puillandre
+** Last update Sun Apr 17 15:17:35 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -81,7 +81,7 @@ int	check_click_node(t_data *data)
   return (- 1);
 }
 
-void	check_click(t_data *data)
+int	check_click(t_data *data)
 {
   int	i;
 
@@ -93,10 +93,11 @@ void	check_click(t_data *data)
 	  data->mouse->y >= data->plan[0]->node[i]->pos.y - 30
 	  && data->mouse->y <= data->plan[0]->node[i]->pos.y + 30)
 	{
-	  printf("C'est le Node %i\n", i);
+	  return (i);
 	}
       i++;
     }
+  return (-1);
   /* if ((data->mouse->x > 42 && data->mouse->x < 207) && */
   /*     (data->mouse->y > 733 && data->mouse->y < 807)) */
   /*   { */

@@ -5,18 +5,12 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Sat Apr 16 11:47:19 2016 edouard puillandre
-** Last update Sat Apr 16 11:51:36 2016 edouard puillandre
+** Last update Sun Apr 17 12:10:43 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
 
 int	my_use(t_data *data)
-{
-  (void) data;
-  return (0);
-}
-
-int	my_go(t_data *data)
 {
   (void) data;
   return (0);

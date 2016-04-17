@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 11:43:38 2016 edouard puillandre
+** Last update Sun Apr 17 14:57:08 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -83,7 +83,10 @@ t_data		*my_init_data()
   malloc_and_load_perso(data);
   data->player->vec[0] = 0;
   data->player->vec[1] = 0;
+  data->player->coef[0] = 0;
+  data->player->coef[1] = 0;
   data->loop = 0;
+  data->player->chemin = NULL;
   CUR = 0;
   MOV = 1;
   data->pos->x = PIX_X;

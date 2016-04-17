@@ -5,7 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Sun Apr 17 11:47:34 2016 edouard puillandre
+## Last update Sun Apr 17 13:22:58 2016 Alexandre Blanchard
 ##
 
 DEBUG	=	yes
@@ -51,7 +51,11 @@ SRC	=	src/main.c		\
 		src/init_board.c	\
 		src/fct_button.c	\
 		src/load_node.c		\
-		src/put_board.c
+		src/put_board.c		\
+		src/go.c		\
+		src/same_way.c		\
+		src/diff_way.c		\
+		src/next_node.c
 
 RM	=	rm -f
 

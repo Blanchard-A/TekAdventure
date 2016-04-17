@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 15:13:26 2016 edouard puillandre
+** Last update Sun Apr 17 15:17:51 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -51,6 +51,7 @@
 # define ABS(x) (((x) < 0) ? - (x) : (x))
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos
+# define SCALE data->player->mov[CUR]->calque[MOV]->scale
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -98,6 +99,7 @@ typedef struct		s_node
 /* personnage principal*/
 typedef struct	s_char
 {
+  int		*chemin;
   t_move	**mov; /* tableau des mouvements*/
   float		coef[2];
   float		vec[2];
@@ -106,6 +108,9 @@ typedef struct	s_char
   t_node	*dest; /* node de destination du perso */
   int		cur_mov; /*mouvement courant*/
   int		mov_or_not;
+  int		cur_node; /*Node sur lequel le perso se trouve */
+  int		next_node; /*Node sur lequel le perso se trouve */
+  int		dest_node; /*Node sur lequel le perso se trouve */
   float		x;
   float		y;
 }		t_char;
@@ -234,7 +239,7 @@ void			to_pix_scale(t_data *data, t_calque *calque);
 void	free_calque(t_data *);
 int	my_malloc_plan(t_data *, int);
 t_board	*my_init_board();
-void	check_click(t_data *);
+int	check_click(t_data *);
 int	my_use(t_data *);
 int	my_go(t_data *);
 int	my_pick(t_data *);
@@ -253,5 +258,12 @@ int	check_click_obj(t_data *data);
 int	check_click_node(t_data *data);
 int	check_click_button(t_data *data);
 int	check_click_bis(t_data *data);
+
+int	*search_way(int, int, t_node **);
+int	find_way(t_node *, t_node *);
+int	find_same_way(int, int, int, t_node **);
+int	find_diff_way(int, int, t_node **);
+
+void	to_next_node(t_data *);
 
 #endif /* !ADVENTURE_H_ */
