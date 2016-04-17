@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 21:44:48 2016 edouard puillandre
+** Last update Sun Apr 17 22:52:57 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -58,6 +58,7 @@
 # define PLAN data->plan[0]
 # define CAL data->plan[0]->calque
 # define MOVI data->player->mov[i]
+# define PLAYER data->player
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -265,5 +266,6 @@ t_text	*init_text();
 char	*my_strcpy(char *str);
 void	move_poteau(t_data *);
 void	my_free_board(t_board *);
+int	malloc_node_1(t_data *);
 
 #endif /* !ADVENTURE_H_ */

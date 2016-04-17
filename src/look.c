@@ -1,10 +1,11 @@
 /*
-** look.c for gfx_tekadventure in /home/puilla_e/Semestre2/infographie/
-** Made by edouard puillandre
-** Login   <puilla_e@epitech.net>
-**
-** Started on  Sun Apr 17 12:11:10 2016 edouard puillandre
-** Last update Sun Apr 17 20:02:19 2016 edouard puillandre
+** look.c for tekadv in /home/blanch_p/rendu/Semestre2/gfx_tekadventure
+** 
+** Made by Alexandre Blanchard
+** Login   <blanch_p@epitech.net>
+** 
+** Started on  Sun Apr 17 21:56:24 2016 Alexandre Blanchard
+** Last update Sun Apr 17 21:56:30 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"

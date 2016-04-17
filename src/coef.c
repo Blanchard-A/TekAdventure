@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Sat Apr 16 14:37:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:08:43 2016 Voyevoda
+** Last update Sun Apr 17 22:18:15 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -48,36 +48,27 @@ void	move_perso(t_data *data)
   data->loop++;
   if (data->loop == 12)
     data->loop = 0;
-  data->player->vec[0] = data->player->vec[0] + data->player->coef[0];
-  data->player->vec[1] = data->player->vec[1] + data->player->coef[1];
-
-  data->player->x = data->player->mov[CUR]->calque[MOV]->x
-    + (int) data->player->vec[0];
-  data->player->vec[0] = data->player->vec[0] - (int)data->player->vec[0];
-  data->player->y = data->player->mov[CUR]->calque[MOV]->y
-    + (int) data->player->vec[1];
-  data->player->vec[1] = data->player->vec[1] - (int)data->player->vec[1];
-
-  if ((data->player->x >=
-       data->plan[0]->node[data->player->next_node]->pos.x &&
-       data->player->coef[0] > 0) ||
-      (data->player->x <=
-       data->plan[0]->node[data->player->next_node]->pos.x &&
-       data->player->coef[0] < 0) ||
-       (data->player->y >=
-  	data->plan[0]->node[data->player->next_node]->pos.y &&
-       data->player->coef[1] > 0) ||
-      (data->player->y <=
-       data->plan[0]->node[data->player->next_node]->pos.y &&
-       data->player->coef[1] < 0))
+  PLAYER->vec[0] = PLAYER->vec[0] + PLAYER->coef[0];
+  PLAYER->vec[1] = PLAYER->vec[1] + PLAYER->coef[1];
+  PLAYER->x = PLAYER->mov[CUR]->calque[MOV]->x + (int)PLAYER->vec[0];
+  PLAYER->vec[0] = PLAYER->vec[0] - (int)PLAYER->vec[0];
+  PLAYER->y = PLAYER->mov[CUR]->calque[MOV]->y + (int) PLAYER->vec[1];
+  PLAYER->vec[1] = PLAYER->vec[1] - (int)PLAYER->vec[1];
+  if ((PLAYER->x >=
+       data->plan[0]->node[PLAYER->next_node]->pos.x && PLAYER->coef[0] > 0) ||
+      (PLAYER->x <=
+       data->plan[0]->node[PLAYER->next_node]->pos.x && PLAYER->coef[0] < 0) ||
+      (PLAYER->y >=
+       data->plan[0]->node[PLAYER->next_node]->pos.y && PLAYER->coef[1] > 0) ||
+      (PLAYER->y <=
+       data->plan[0]->node[PLAYER->next_node]->pos.y && PLAYER->coef[1] < 0))
     {
-      data->player->cur_node = data->player->next_node;
-      data->player->vec[0] = 0;
-      data->player->coef[0] = 0;
-      data->player->coef[1] = 0;
-      data->player->vec[1] = 0;
+      PLAYER->cur_node = PLAYER->next_node;
+      PLAYER->vec[0] = 0;
+      PLAYER->coef[0] = 0;
+      PLAYER->coef[1] = 0;
+      PLAYER->vec[1] = 0;
     }
-
   pos_perso(data);
 }
 

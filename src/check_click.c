@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 16:31:12 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:09:42 2016 Voyevoda
+** Last update Sun Apr 17 23:04:26 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -97,18 +97,4 @@ int	check_click(t_data *data)
       i++;
     }
   return (-1);
-}
-
-int	check_click_bis(t_data *data)
-{
-  int	check;
-
-  if ((check = check_click_button(data)) != - 1)
-    data->board->sel = check;
-  else
-    {
-      check = data->board->sel;
-      data->board->button[check]->fct(data);
-    }
-  return (0);
 }

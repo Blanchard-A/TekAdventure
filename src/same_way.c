@@ -5,15 +5,15 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Wed Apr 13 13:47:01 2016 Alexandre Blanchard
-** Last update Sun Apr 17 22:45:03 2016 Voyevoda
+** Last update Sun Apr 17 21:59:08 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
 
-int     find_next(int dep, int arr, t_node **nod, int ways)
+int	find_next(int dep, t_node **nod, int ways)
 {
-  int   i;
-  int   j;
+  int	i;
+  int	j;
 
   i = dep + 1;
   j = 0;
@@ -31,15 +31,13 @@ int     find_next(int dep, int arr, t_node **nod, int ways)
       i++;
 
     }
-  (void)arr;
-
   return (0);
 }
 
-int     find_prev(int dep, int arr, t_node **nod, int ways)
+int	find_prev(int dep, t_node **nod, int ways)
 {
-  int   i;
-  int   j;
+  int	i;
+  int	j;
 
   i = dep - 1;
   j = 0;
@@ -56,17 +54,14 @@ int     find_prev(int dep, int arr, t_node **nod, int ways)
           j++;
         }
       i--;
-
     }
-  (void)arr;
-
   return (0);
 }
 
-int     nouveau_depart(int ways, int res, t_node **nod)
+int	nouveau_depart(int ways, int res, t_node **nod)
 {
-  int   i;
-  int   j;
+  int	i;
+  int	j;
 
   i = 0;
   j = 0;
@@ -86,20 +81,20 @@ int     nouveau_depart(int ways, int res, t_node **nod)
 
 }
 
-int    find_same_way(int way, int dep, int arr, t_node **nod)
+int	find_same_way(int way, int dep, int arr, t_node **nod)
 {
-  int   res;
+  int	res;
 
   res = nod[dep]->pos_way;
   if (nod[arr]->pos_way - res > 0)
     {
-      res = find_next(dep, arr, nod, way);
+      res = find_next(dep, nod, way);
       dep = nouveau_depart(way, res, nod);
       return (dep);
     }
   else
     {
-      res = find_prev(dep, arr, nod, way);
+      res = find_prev(dep, nod, way);
       dep = nouveau_depart(way, res, nod);
       return (dep);
     }
