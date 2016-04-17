@@ -5,12 +5,11 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:20 2016 edouard puillandre
-** Last update Sun Apr 17 21:41:00 2016 edouard puillandre
+** Last update Sun Apr 17 21:47:17 2016 edouard puillandre
 */
 
 #include "adventure.h"
 
-#include <stdlib.h>
 void	free_obj(t_data *data)
 {
   int	i;
@@ -55,30 +54,22 @@ void	free_calque(t_data *data)
   int	i;
 
   i = - 1;
-  write(1, "1", 1);
   while (data->plan[0]->calque[++i] != NULL)
     {
       bunny_delete_clipable(&data->plan[0]->calque[i]->pix->clipable);
       bunny_free(data->plan[0]->calque[i]);
     }
   i = - 1;
-  write(1, "2", 1);
   while (data->plan[0]->node[++i] != NULL)
     {
       bunny_free(data->plan[0]->node[i]->way);
       bunny_free(data->plan[0]->node[i]);
     }
-  write(1, "3", 1);
   bunny_free(data->plan[0]->calque);
-  write(1, "4", 1);
   bunny_free(data->plan[0]->node);
-  write(1, "5", 1);
   free_pnj(data);
-  write(1, "6", 1);
   free_obj(data);
-  write(1, "7", 1);
   bunny_free(data->plan[0]);
-  write(1, "8", 1);
   bunny_free(data->plan);
 }
 

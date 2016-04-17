@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:12:51 2016 Voyevoda
+** Last update Sun Apr 17 21:46:23 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -157,6 +157,7 @@ t_data	*load_decor_2(t_data *data)
        load_bitmap("ressource/decor_2/poteau.bmp")) == NULL)
     return (NULL);
   data->plan[0]->calque[3] = NULL;
+  data->plan[0]->pnj = NULL;
    make_position_decor_2(data);
    return (data);
 }

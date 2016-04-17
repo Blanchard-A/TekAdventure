@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 21:43:32 2016 edouard puillandre
+** Last update Sun Apr 17 21:44:48 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -88,13 +88,6 @@ typedef struct		s_move
   int			div;
   int			cur_pos;
 }			t_move;
-
-typedef struct		s_text
-{
-  t_bunny_pixelarray	*font;
-  t_bunny_position	pos;
-  char			*str;
-}			t_text;
 
 typedef struct		s_node
 {
