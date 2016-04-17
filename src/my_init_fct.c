@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 21:07:02 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:13:31 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -23,22 +23,14 @@ void		my_init_pix(t_bunny_pixelarray	*pix)
 
 int		my_malloc_plan(t_data *data, int nb_calc)
 {
-  /* int		i; */
   int		j;
 
   j = 0;
-  /* i = 0; */
   if ((data->plan = bunny_malloc(sizeof(t_plan *) * 1)) == NULL ||
       (data->plan[0] = bunny_malloc(sizeof(t_plan) * 1)) == NULL ||
       (data->plan[0]->calque = bunny_malloc(sizeof(t_calque *) *
 					    (nb_calc + 1))) == NULL)
     return (-1);
-    /*   i++; */
-    /* } */
-  /* data->plan->calque = bunny_malloc(sizeof(t_calque *) * 1); */
-  /* i = 0; */
-  /* while (i < 2) */
-  /*   { */
   j = 0;
   while (j < nb_calc)
     {
@@ -47,12 +39,8 @@ int		my_malloc_plan(t_data *data, int nb_calc)
 	return (-1);
       j++;
     }
-      /* i++; */
-    /* } */
   return (0);
 }
-
-#include <stdio.h>
 
 t_data		*my_init_data()
 {
@@ -67,12 +55,6 @@ t_data		*my_init_data()
       (data->board = my_init_board()) == NULL ||
       (data->text = init_text()) == NULL)
     {
-      printf("%p\n", data->plan[0]->calque[0]->pix);
-      printf("%p\n", data->plan[0]->calque[1]->pix);
-      printf("%p\n", data->plan[0]->calque[2]->pix);
-      printf("%p\n", data->plan[0]->calque[3]->pix);
-      printf("%p\n", data->plan[0]->calque[4]->pix);
-      printf("%p\n", data->plan[0]->calque[5]->pix);
       return (NULL);
     }
   data->id_plan = 0;

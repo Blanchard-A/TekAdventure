@@ -5,8 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 21:27:02 2016 edouard puillandre
-** Last update Sun Apr 17 21:07:37 2016 Alexandre Blanchard
+** Last update Sun Apr 17 21:43:32 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -70,7 +69,6 @@
 
 typedef struct s_data * data;
 
-/*definition d'un calque: ceux-ci seront stocké dans un tableau*/
 typedef struct		s_calque
 {
   char			*file;
@@ -78,60 +76,62 @@ typedef struct		s_calque
   float			x_init;
   float			y_init;
   float			x;
-  float			x_speed; /* vitesse suivant x (peut être nulle)*/
+  float			x_speed;
   float			y;
   float			y_speed;
   int			scale;
 }			t_calque;
 
-/* rassemblement des infos d'une des animations*/
 typedef struct		s_move
 {
-  t_calque		**calque; /* t_bunny_pixelarray	*pix; */
-  int			div; /* nb image dans le sprite*/
-  int			cur_pos; /* position courante */
+  t_calque		**calque;
+  int			div;
+  int			cur_pos;
 }			t_move;
 
-/* noeud de position*/
+typedef struct		s_text
+{
+  t_bunny_pixelarray	*font;
+  t_bunny_position	pos;
+  char			*str;
+}			t_text;
+
 typedef struct		s_node
 {
-  t_bunny_position	pos; /* position du noeud*/
-  int			scale; /* echelle du perso à ce noeud*/
-  int			*way; /* chemin sur lequel se trouve le noeud*/
-  int			pos_way; /* position du noeud dans le chemin */
-  int			type; /*indication (-1) noeud de poid ou (-2) de placement ou de sortie (numéro du plan) */
-  int			id_cal; /*devant quel calque se trouve le node*/
+  t_bunny_position	pos;
+  int			scale;
+  int			*way;
+  int			pos_way;
+  int			type;
+  int			id_cal;
 }			t_node;
 
-/* personnage principal*/
 typedef struct	s_char
 {
   int		*chemin;
-  t_move	**mov; /* tableau des mouvements*/
+  t_move	**mov;
   float		coef[2];
   float		vec[2];
-  int		cur_mov; /*mouvement courant*/
+  int		cur_mov;
   int		mov_or_not;
-  int		cur_node; /*Node sur lequel le perso se trouve */
-  int		next_node; /*Node sur lequel le perso se trouve */
-  int		dest_node; /*Node sur lequel le perso se trouve */
+  int		cur_node;
+  int		next_node;
+  int		dest_node;
   float		x;
   float		y;
 }		t_char;
 
-/*Objet avec indication + nom*/
 typedef struct	s_obj
 {
   t_calque	*calque;
   char		*name;
-  char		*desc; /* description de l'objet */
+  char		*desc;
   char		*use;
   int		erase;
   int		id_calc;
   int		close;
 }		t_obj;
 
-/* Pnj avec 2 lignes de dialogues : une avant sans l'objet (obj) donné au pnj, l'autre, après. Parfois, l'objet give est donné aux joueurs*/
 typedef struct	s_pnj
 {
   t_calque	*calque;
@@ -145,14 +145,13 @@ typedef struct	s_pnj
   int		close;
 }		t_pnj;
 
-/*Structure d'un plan avec les calques, objets et node présent*/
 typedef struct	s_plan
 {
   t_calque	**calque;
   t_obj		**obj;
   t_pnj		**pnj;
   t_node	**node;
-  int		start_node; /*node de départ: peut changer par les déplacement du personnage*/
+  int		start_node;
 }		t_plan;
 
 typedef struct		s_button

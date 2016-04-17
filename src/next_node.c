@@ -5,12 +5,10 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 13:09:04 2016 Alexandre Blanchard
-** Last update Sun Apr 17 18:21:31 2016 Alexandre Blanchard
+** Last update Sun Apr 17 22:59:25 2016 Voyevoda
 */
 
 #include "adventure.h"
-
-#include <stdio.h>
 
 int	check_node(t_data *data)
 {
@@ -45,7 +43,6 @@ int	check_node(t_data *data)
 	  i++;
 	}
       data->player->cur_node = 1;
-      /* data->player->next_node = 1; */
       data->player->dest_node = 1;
     }
   if (PLAN->node[data->player->cur_node]->type == 0)
@@ -74,7 +71,6 @@ int	check_node(t_data *data)
 	  i++;
 	}
       data->player->cur_node = 1;
-      /* data->player->next_node = 1; */
       data->player->dest_node = 1;
 
     }
@@ -100,11 +96,7 @@ void	to_next_node(t_data *data)
       i++;
     }
   data->player->next_node = data->player->chemin[i + 1];
-  /* printf("player est a %f, %f\n", data->player->x, data->player->y); */
-  /* printf("pos %i, %i\n", data->plan[data->id_plan]->node[i + 1]->pos.x, data->plan[data->id_plan]->node[i + 1]->pos.y); */
-
   calc_coef(data->player->x, data->player->y,
 	    &data->plan[0]->
 	    node[data->player->next_node]->pos, data);
-  
 }

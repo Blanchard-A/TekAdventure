@@ -5,41 +5,27 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Sat Apr 16 14:37:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 19:01:04 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:08:43 2016 Voyevoda
 */
 
 #include "adventure.h"
-
-#include <stdio.h>
 
 void	have_perso(t_data *data)
 {
   if (fabs(data->player->coef[1]) > fabs(data->player->coef[0]))
     {
       if (data->player->coef[1] < 0)
-	{
-	  data->player->cur_mov = 2;
-
-	}
+	data->player->cur_mov = 2;
       else
-	{
-	  data->player->cur_mov = 0;
-	}
-
+	data->player->cur_mov = 0;
     }
   else
     {
       if (data->player->coef[0] > 0)
-	{
-	  data->player->cur_mov = 3;
-
-	}
+	data->player->cur_mov = 3;
       else
-	{
-	  data->player->cur_mov = 1;
-	}
+	data->player->cur_mov = 1;
     }
-
 }
 
 void		pos_perso(t_data *data)
@@ -59,7 +45,6 @@ void		pos_perso(t_data *data)
 
 void	move_perso(t_data *data)
 {
-  /* if (data->player->coef[0] != 0 || data->player->coef[1] != 0) */
   data->loop++;
   if (data->loop == 12)
     data->loop = 0;
@@ -94,8 +79,6 @@ void	move_perso(t_data *data)
     }
 
   pos_perso(data);
-  /* data->player->mov[CUR]->calque[MOV]->x = data->player->x; */
-  /* data->player->mov[CUR]->calque[MOV]->y = data->player->y; */
 }
 
 void	calc_coef(float x_perso, float y_perso, t_bunny_position *dest,
@@ -103,15 +86,10 @@ void	calc_coef(float x_perso, float y_perso, t_bunny_position *dest,
 {
   data->player->coef[0] = (dest->x - x_perso) /
     sqrt(pow(dest->x - x_perso, 2) + pow(dest->y - y_perso, 2)) * 10;
-  printf("coef x = %f\n", data->player->coef[0]);
   data->player->coef[1] = (dest->y - y_perso) /
     sqrt(pow(dest->x - x_perso, 2) + pow(dest->y - y_perso, 2)) * 10;
-  printf("coef y = %f\n", data->player->coef[1]);
   data->player->vec[0] = 0;
-  printf("vec x = %f\n", data->player->vec[0]);
   data->player->vec[1] = 0;
-  printf("vec y = %f\n", data->player->vec[1]);
   have_perso(data);
   data->player->mov[CUR]->cur_pos = 0;
-
 }

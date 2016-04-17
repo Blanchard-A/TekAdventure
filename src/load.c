@@ -5,13 +5,10 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 21:09:49 2016 edouard puillandre
-** Last update Sun Apr 17 21:00:09 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:12:51 2016 Voyevoda
 */
 
 #include "adventure.h"
-
-#include <stdio.h>
 
 t_data	*malloc_and_load_perso(t_data *data)
 {
@@ -27,7 +24,6 @@ t_data	*malloc_and_load_perso(t_data *data)
   data->player->dest_node = 1;
   data->player->x = 193;
   data->player->y = 409;
-  /* data->player->mov[0] = bunny_malloc(sizeof(t_move) * 4); */
   while (i < 4)
     {
       if ((MOVI = bunny_malloc(sizeof(t_move) * 1)) == NULL ||
@@ -56,16 +52,7 @@ t_data	*malloc_and_load_perso(t_data *data)
 	  data->player->mov[i]->calque[j]->x_init = 193;
 	  data->player->mov[i]->calque[j]->y = 409;
 	  data->player->mov[i]->calque[j]->y_init = 409;
-
-	  /* data->player->mov[i]->calque[j]->x = 193 - */
-	  /*   ((data->player->mov[i]->calque[j]->WIDTH / 2) * */
-	  /*    data->plan[0]->node[1]->scale) / 100; */
-	  /* data->player->mov[i]->calque[j]->x_init = 193 - */
-	  /*   ((data->player->mov[i]->calque[j]->WIDTH / 2) */
-	  /*    * data->plan[0]->node[1]->scale) / 100; */
 	  data->player->mov[i]->calque[j]->x_speed = 0;
-	  /* data->player->mov[i]->calque[j]->y = 409 - (data->player->mov[i]->calque[j]->HEIGHT * data->plan[0]->node[1]->scale / 100); */
-	  /* data->player->mov[i]->calque[j]->y_init = 409; */
 	  data->player->mov[i]->calque[j]->y_speed = 0;
 	  j++;
 	}
@@ -96,45 +83,30 @@ t_data	*load_decor_1(t_data *data)
        load_bitmap("ressource/decor_1/poteau1.bmp")) == NULL ||
       (data->plan[0]->calque[6]->pix =
        load_bitmap("ressource/decor_1/Falaise2.bmp")) == NULL)
-      /* (data->plan[0]->calque[7]->pix = */
-      /*  load_bitmap("ressource/interface/interface_2.0.bmp")) == NULL) */
     return (NULL);
   data->plan[0]->calque[7] = NULL;
   data->plan[0]->pnj[1] = NULL;
   data->plan[0]->obj = NULL;
-  /* printf("load ok\n"); */
   make_position_decor_1(data);
-  /* printf("position ok\n"); */
   return (data);
 }
 
 void	make_position_decor_1(t_data *data)
 {
-  /* CIEL */
   data->plan[0]->calque[0]->x = 0;
   data->plan[0]->calque[0]->y = 0;
-  /* NUAGES */
   data->plan[0]->calque[1]->x = 0;
   data->plan[0]->calque[1]->y = -20;
-  /* FALAISE */
   data->plan[0]->calque[2]->x = 558;
   data->plan[0]->calque[2]->y = 10;
-  /* DECOR */
   data->plan[0]->calque[3]->x = -22;
   data->plan[0]->calque[3]->y = 0;
-  /* MAISON */
   data->plan[0]->calque[4]->x = 234;
   data->plan[0]->calque[4]->y = 3;
-  /* POTEAU */
   data->plan[0]->calque[5]->x = 165;
   data->plan[0]->calque[5]->y = 302;
-  /* MONTAGNE */
   data->plan[0]->calque[6]->x = -27;
   data->plan[0]->calque[6]->y = 560;
-  /* INTERFACE */
-  /* data->plan[0]->calque[7]->x = 0; */
-  /* data->plan[0]->calque[7]->y = 720; */
-
   data->plan[0]->calque[0]->x_init = 0;
   data->plan[0]->calque[0]->y_init = 0;
   data->plan[0]->calque[1]->x_init = 0;
@@ -149,9 +121,6 @@ void	make_position_decor_1(t_data *data)
   data->plan[0]->calque[5]->y_init = 302;
   data->plan[0]->calque[6]->x_init = -27;
   data->plan[0]->calque[6]->y_init = 560;
-  /* data->plan[0]->calque[7]->x_init = 0; */
-  /* data->plan[0]->calque[7]->y_init = 720; */
-
   data->plan[0]->calque[0]->x_speed = 0;
   data->plan[0]->calque[0]->y_speed = 0;
   data->plan[0]->calque[1]->x_speed = -1;
@@ -166,11 +135,7 @@ void	make_position_decor_1(t_data *data)
   data->plan[0]->calque[5]->y_speed = 0;
   data->plan[0]->calque[6]->x_speed = -0.5;
   data->plan[0]->calque[6]->y_speed = 0.5;
-  /* data->plan[0]->calque[7]->x_speed = 0; */
-  /* data->plan[0]->calque[7]->y_speed = 0; */
-
   data->plan[0]->pnj[0]->name = my_strcpy("Le Vieux");;
-  /* data->plan[0]->pnj[0]->dial = "Dialogue"; */
   data->plan[0]->pnj[0]->desc = my_strcpy("desc de robin");
   data->plan[0]->pnj[0]->cur_dial = 0;
   data->plan[0]->pnj[0]->obj = my_strcpy("clef");
@@ -190,15 +155,10 @@ t_data	*load_decor_2(t_data *data)
        load_bitmap("ressource/decor_2/poutre2.bmp")) == NULL ||
       (data->plan[0]->calque[2]->pix =
        load_bitmap("ressource/decor_2/poteau.bmp")) == NULL)
-      /* (data->plan[0]->calque[3]->pix = */
-      /*  load_bitmap("clef.bmp")) == NULL) */
     return (NULL);
   data->plan[0]->calque[3] = NULL;
-  data->plan[0]->obj[1] = NULL;
-  /* printf("load ok\n"); */
-  make_position_decor_2(data);
-  /* printf("position ok\n"); */
-  return (data);
+   make_position_decor_2(data);
+   return (data);
 }
 
 int	make_position_decor_2(t_data *data)

@@ -5,12 +5,11 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Wed Nov 18 19:39:56 2015 Mathieu Sauvau
-** Last update Fri Apr 15 18:42:00 2016 edouard puillandre
+** Last update Sun Apr 17 22:45:12 2016 Voyevoda
 */
 
 #include "lapin.h"
 
-#include <stdio.h>
 void		tekpixel(t_bunny_pixelarray *pix_ar,
 			 t_bunny_position *pos,
 			 unsigned int color)

@@ -5,12 +5,10 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Tue Apr 12 11:31:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 18:50:01 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:07:29 2016 Voyevoda
 */
 
 #include "adventure.h"
-
-#include <stdio.h>
 
 void	change_perso_bord_neg(t_data *data, const t_bunny_position *pos)
 {
@@ -104,8 +102,5 @@ void	on_the_bord(t_data *data, const t_bunny_position *pos)
 
 void	have_pos(t_data *data)
 {
-  /* const t_bunny_position	*pos; */
-  /* pos = bunny_get_mouse_position(); */
   on_the_bord(data, data->mouse);
-  
 }
