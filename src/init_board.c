@@ -5,12 +5,11 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Sat Apr 16 10:16:07 2016 edouard puillandre
-** Last update Sun Apr 17 11:19:42 2016 edouard puillandre
+** Last update Sun Apr 17 22:36:40 2016 Voyevoda
 */
 
 #include "adventure.h"
 
-#include <stdio.h>
 void	def_pos_button(t_button **button)
 {
   button[ID_USE]->pos.x = X_USE;
@@ -70,7 +69,6 @@ t_board		*my_init_board()
 {
   t_board	*board;
 
-  printf("&");
   if ((board = bunny_malloc(sizeof(*board))) == NULL ||
       (board->button =
        bunny_malloc(sizeof(*board->button) * (NB_BUTTON + 1))) == NULL ||
@@ -80,7 +78,6 @@ t_board		*my_init_board()
       (board->calque = bunny_malloc(sizeof(*board->calque))) == NULL ||
       (board->calque->pix = load_bitmap(BOARD_BMP)) == NULL)
     return (NULL);
-  printf("lol");
   board->calque->x_speed = 0;
   board->calque->y_speed = 0;
   board->calque->x_init = 0;

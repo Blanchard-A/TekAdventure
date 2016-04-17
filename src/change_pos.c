@@ -5,12 +5,10 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Mon Apr 11 10:29:23 2016 Alexandre Blanchard
-** Last update Sun Apr 17 16:14:01 2016 Alexandre Blanchard
+** Last update Sun Apr 17 22:43:44 2016 Voyevoda
 */
 
 #include "adventure.h"
-
-#include <stdio.h>
 
 void	change_pos_nuages(t_data *data)
 {

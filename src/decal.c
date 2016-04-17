@@ -5,12 +5,10 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Tue Apr 12 11:31:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 17:06:33 2016 Alexandre Blanchard
+** Last update Sun Apr 17 22:44:01 2016 Voyevoda
 */
 
 #include "adventure.h"
-
-#include <stdio.h>
 
 void	change_perso_bord_neg(t_data *data, const t_bunny_position *pos)
 {
