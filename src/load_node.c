@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 10:24:01 2016 Alexandre Blanchard
-** Last update Sun Apr 17 14:51:33 2016 Alexandre Blanchard
+** Last update Sun Apr 17 21:41:59 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -57,7 +57,6 @@ void	load_node_1(t_data *data)
   data->plan[0]->node[3]->way[2] = -1;
   data->plan[0]->node[3]->pos_way = 3;
 
-
   data->plan[0]->node[4]->pos.x = 131;
   data->plan[0]->node[4]->pos.y = 334;
   data->plan[0]->node[4]->way[0] = 2;
@@ -78,7 +77,6 @@ void	load_node_1(t_data *data)
   data->plan[0]->node[6]->way[1] = -1;
   data->plan[0]->node[6]->way[2] = -1;
   data->plan[0]->node[6]->pos_way = 4;
-
 
   data->plan[0]->node[7]->pos.x = 460;
   data->plan[0]->node[7]->pos.y = 420;
