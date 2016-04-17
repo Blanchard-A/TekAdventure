@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 15:28:05 2016 Alexandre Blanchard
+** Last update Sun Apr 17 15:40:19 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -107,7 +107,6 @@ typedef struct	s_char
   t_node	*next; /* node sur lequel va le perso */
   t_node	*dest; /* node de destination du perso */
   int		cur_mov; /*mouvement courant*/
-  int		id_calc;
   int		mov_or_not;
   int		cur_node; /*Node sur lequel le perso se trouve */
   int		next_node; /*Node sur lequel le perso se trouve */
@@ -139,7 +138,7 @@ typedef struct	s_chest
 /* Pnj avec 2 lignes de dialogues : une avant sans l'objet (obj) donné au pnj, l'autre, après. Parfois, l'objet give est donné aux joueurs*/
 typedef struct	s_pnj
 {
-  t_move	*move;
+  t_calque	*calque;
   char		**dial;
   char		*name;
   char		*desc;
@@ -254,6 +253,11 @@ void	calc_coef(float, float, t_bunny_position *, t_data *);
 void	move_perso(t_data *);
 
 void	load_node_1(t_data *);
+int	check_click_pnj(t_data *data);
+int	check_click_obj(t_data *data);
+int	check_click_node(t_data *data);
+int	check_click_button(t_data *data);
+int	check_click_bis(t_data *data);
 
 int	*search_way(int, int, t_node **, int *);
 int	find_way(t_node *, t_node *);
