@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Sat Apr 16 14:37:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 22:43:52 2016 Voyevoda
+** Last update Sun Apr 17 23:08:43 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -15,24 +15,16 @@ void	have_perso(t_data *data)
   if (fabs(data->player->coef[1]) > fabs(data->player->coef[0]))
     {
       if (data->player->coef[1] < 0)
-	{
-	  data->player->cur_mov = 2;
-	}
+	data->player->cur_mov = 2;
       else
-	{
-	  data->player->cur_mov = 0;
-	}
+	data->player->cur_mov = 0;
     }
   else
     {
       if (data->player->coef[0] > 0)
-	{
-	  data->player->cur_mov = 3;
-	}
+	data->player->cur_mov = 3;
       else
-	{
-	  data->player->cur_mov = 1;
-	}
+	data->player->cur_mov = 1;
     }
 }
 

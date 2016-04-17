@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 22:44:51 2016 Voyevoda
+** Last update Sun Apr 17 22:59:54 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -48,7 +48,8 @@ t_data		*my_init_data()
       (data->pix = bunny_new_pixelarray(WIN_X, WIN_Y)) == NULL ||
       (data->win = bunny_start(WIN_X, WIN_Y, false, WIN_NAME)) == NULL ||
       (data->pos = bunny_malloc(sizeof(t_bunny_position))) == NULL ||
-      (data->board = my_init_board()) == NULL)
+      (data->board = my_init_board()) == NULL ||
+      (data->text = init_text()) == NULL)
     {
       return (NULL);
     }

@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 22:44:23 2016 Voyevoda
+** Last update Sun Apr 17 23:02:27 2016 Voyevoda
 */
 
 #include "adventure.h"
@@ -16,13 +16,16 @@ t_bunny_response	mainloop(t_data *data)
     to_next_node(data);
   if (data->player->coef[0] != 0 && data->player->coef[1] != 0)
     move_perso(data);
-     if (data->id_plan == 0)
+  if (data->id_plan == 0)
     {
       change_pos(data);
       change_pos_nuages(data);
       have_pos(data);
     }
+  else if (data->id_plan == 1)
+    move_poteau(data);
   envoi_to_copy(data);
+  tektext(data->pix, data->text);
   change_pos_perso(data->player->mov[CUR]->calque[0]->pix, data->loop);
   bunny_blit(&data->win->buffer, &data->pix->clipable, data->pos);
   bunny_display(data->win);
@@ -75,7 +78,6 @@ int	main(int ac, char **av, char **env)
     return (1);
   if ((data = my_init_data()) == NULL)
     return (1);
-  my_init_board();
   bunny_set_loop_main_function((t_bunny_loop)mainloop);
   bunny_set_key_response((t_bunny_key)escape);
   bunny_set_move_response((t_bunny_move)move);
