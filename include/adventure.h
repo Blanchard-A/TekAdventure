@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 23:21:50 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:33:31 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -104,20 +104,20 @@ typedef struct		s_node
   int			id_cal;
 }			t_node;
 
-typedef struct	s_char
+typedef struct		s_char
 {
-  int		*chemin;
-  t_move	**mov;
-  float		coef[2];
-  float		vec[2];
-  int		cur_mov;
-  int		mov_or_not;
-  int		cur_node;
-  int		next_node;
-  int		dest_node;
-  float		x;
-  float		y;
-}		t_char;
+  int			*chemin;
+  t_move		**mov;
+  float			coef[2];
+  float			vec[2];
+  int			cur_mov;
+  int			mov_or_not;
+  int			cur_node;
+  int			next_node;
+  int			dest_node;
+  float			x;
+  float			y;
+}			t_char;
 
 typedef struct	s_obj
 {
@@ -233,45 +233,42 @@ void			tekpixel(t_bunny_pixelarray	*pix,
 unsigned int		getpixel(t_bunny_pixelarray	*pix,
 				 t_bunny_position	*pos);
 void			to_pix_scale(t_data *data, t_calque *calque, int dec);
-void	free_calque(t_data *);
-int	my_malloc_plan(t_data *, int);
-t_board	*my_init_board();
-int	check_click(t_data *);
-int	my_use(t_data *);
-int	my_go(t_data *);
-int	my_pick(t_data *);
-int	my_give(t_data *);
-int	my_talk(t_data *);
-int	my_look(t_data *);
-int	compare_to_col(t_color, t_color);
-void	draw_board(t_data *data);
-
-void	calc_coef(float, float, t_bunny_position *, t_data *);
-void	move_perso(t_data *);
-
-int	load_node_1(t_data *);
-int	check_click_pnj(t_data *data);
-int	check_click_obj(t_data *data);
-int	check_click_node(t_data *data);
-int	check_click_button(t_data *data);
-int	check_click_bis(t_data *data);
-
-int	*search_way(int, int, t_node **, int *);
-int	find_way(t_node *, t_node *);
-int	find_same_way(int, int, int, t_node **);
-int	find_diff_way(int, int, t_node **);
+void			free_calque(t_data *);
+int			my_malloc_plan(t_data *, int);
+t_board			*my_init_board();
+int			check_click(t_data *);
+int			my_use(t_data *);
+int			my_go(t_data *);
+int			my_pick(t_data *);
+int			my_give(t_data *);
+int			my_talk(t_data *);
+int			my_look(t_data *);
+int			compare_to_col(t_color, t_color);
+void			draw_board(t_data *data);
+void			calc_coef(float, float, t_bunny_position *, t_data *);
+void			move_perso(t_data *);
+int			load_node_1(t_data *);
+int			check_click_pnj(t_data *data);
+int			check_click_obj(t_data *data);
+int			check_click_node(t_data *data);
+int			check_click_button(t_data *data);
+int			check_click_bis(t_data *data);
+int			*search_way(int, int, t_node **, int *);
+int			find_way(t_node *, t_node *);
+int			find_same_way(int, int, int, t_node **);
+int			find_diff_way(int, int, t_node **);
 t_bunny_position	calc_coord(t_bunny_position	*tmp,
 				   t_calque		*calque,
 				   int			dec);
-int	load_node_2(t_data *);
-int	to_next_node(t_data *);
-void	tektext(t_bunny_pixelarray *out, t_text *text);
-t_text	*init_text();
-char	*my_strcpy(char *str);
-void	move_poteau(t_data *);
-void	my_free_board(t_board *);
-int	malloc_node_1(t_data *);
-int	bunny_set_max_ram();
-int	my_getnbr(const char *str);
+int			load_node_2(t_data *);
+int			to_next_node(t_data *);
+void			tektext(t_bunny_pixelarray *out, t_text *text);
+t_text			*init_text();
+char			*my_strcpy(char *str);
+void			move_poteau(t_data *);
+void			my_free_board(t_board *);
+int			malloc_node_1(t_data *);
+int			bunny_set_max_ram();
+int			my_getnbr(const char *str);
 
 #endif /* !ADVENTURE_H_ */

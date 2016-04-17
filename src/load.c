@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:24:45 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:38:09 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -103,7 +103,7 @@ t_data	*load_decor_2(t_data *data)
       (PLAN->obj[0]->calque->pix =
        load_bitmap("ressource/decor_2/clef.bmp")) == NULL ||
       (data->plan[0]->calque[0]->pix =
-       load_bitmap("ressource/decor_2/decor2.bmp")) == NULL ||
+       load_bitmap("ressource/decor_2/decor2_1.bmp")) == NULL ||
       (data->plan[0]->calque[1]->pix =
        load_bitmap("ressource/decor_2/poutre2.bmp")) == NULL ||
       (data->plan[0]->calque[2]->pix =
