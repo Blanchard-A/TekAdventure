@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 22:58:59 2016 edouard puillandre
+** Last update Sun Apr 17 23:02:16 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -160,6 +160,7 @@ t_data	*load_decor_2(t_data *data)
     return (NULL);
   data->plan[0]->calque[3] = NULL;
   data->plan[0]->pnj = NULL;
+  data->plan[0]->obj[1] = NULL;
    make_position_decor_2(data);
    return (data);
 }
