@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 11:44:17 2016 edouard puillandre
+** Last update Sun Apr 17 13:10:49 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -17,7 +17,15 @@ t_bunny_response	mainloop(t_data *data)
   /* load_decor_1(data);   */
   /* data->id_plan = 0; */
   /* envoi_to_copy(data); */
-
+  if (data->player->coef[0] == 0 && data->player->coef[1] == 0)
+    {
+      to_next_node(data);
+      
+    }
+  if (data->player->coef[0] != 0 && data->player->coef[1] != 0)
+    {
+      move_perso(data);      
+    }
   if (data->id_plan == 0)
     {
       change_pos(data);
@@ -25,7 +33,7 @@ t_bunny_response	mainloop(t_data *data)
       have_pos(data);
     }
   envoi_to_copy(data);
-  move_perso(data);
+
 
   /* printf("ok\n"); */
   /* have_pos(data); */
@@ -64,17 +72,19 @@ t_bunny_response	click(t_bunny_event_state	state,
 
   if (state == GO_DOWN)
     {
-      calc_coef(data->player->mov[0]->calque[0]->x,
-		data->player->mov[0]->calque[0]->y,
-		data->mouse,
-		data);
+      /* calc_coef(data->player->mov[0]->calque[0]->x, */
+      /* 		data->player->mov[0]->calque[0]->y, */
+      /* 		data->mouse, */
+      /* 		data); */
+
+      my_go(data);
 
       /* move_perso(data); */
 
       /* printf("YEAH\n"); */
-      check_click(data);
+      /* check_click(data); */
       /* pos = bunny_get_mouse_position(); */
-      printf("x = %i\ty = %i\n", data->mouse->x, data->mouse->y);
+      /* printf("x = %i\ty = %i\n", data->mouse->x, data->mouse->y); */
       /* if (data->id_plan == 0) */
       /* 	{ */
       /* 	  free_calque(data); */

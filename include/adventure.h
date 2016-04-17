@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 11:46:56 2016 edouard puillandre
+** Last update Sun Apr 17 13:23:21 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -51,6 +51,7 @@
 # define ABS(x) (((x) < 0) ? - (x) : (x))
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos
+# define SCALE data->player->mov[CUR]->calque[MOV]->scale
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -98,6 +99,7 @@ typedef struct		s_node
 /* personnage principal*/
 typedef struct	s_char
 {
+  int		*chemin;
   t_move	**mov; /* tableau des mouvements*/
   float		coef[2];
   float		vec[2];
@@ -107,6 +109,9 @@ typedef struct	s_char
   int		cur_mov; /*mouvement courant*/
   int		id_calc;
   int		mov_or_not;
+  int		cur_node; /*Node sur lequel le perso se trouve */
+  int		next_node; /*Node sur lequel le perso se trouve */
+  int		dest_node; /*Node sur lequel le perso se trouve */
   float		x;
   float		y;
 }		t_char;
@@ -235,7 +240,7 @@ void			to_pix_scale(t_data *data, t_calque *calque);
 void	free_calque(t_data *);
 int	my_malloc_plan(t_data *, int);
 t_board	*my_init_board();
-void	check_click(t_data *);
+int	check_click(t_data *);
 int	my_use(t_data *);
 int	my_go(t_data *);
 int	my_pick(t_data *);
@@ -249,5 +254,12 @@ void	calc_coef(float, float, t_bunny_position *, t_data *);
 void	move_perso(t_data *);
 
 void	load_node_1(t_data *);
+
+int	*search_way(int, int, t_node **);
+int	find_way(t_node *, t_node *);
+int	find_same_way(int, int, int, t_node **);
+int	find_diff_way(int, int, t_node **);
+
+void	to_next_node(t_data *);
 
 #endif /* !ADVENTURE_H_ */
