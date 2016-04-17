@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 21:10:11 2016 edouard puillandre
+** Last update Sun Apr 17 21:27:02 2016 edouard puillandre
 ** Last update Sun Apr 17 21:07:37 2016 Alexandre Blanchard
 */
 
@@ -272,5 +272,6 @@ void	tektext(t_bunny_pixelarray *out, t_text *text);
 t_text	*init_text();
 char	*my_strcpy(char *str);
 void	move_poteau(t_data *);
+void	my_free_board(t_board *);
 
 #endif /* !ADVENTURE_H_ */

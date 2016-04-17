@@ -5,12 +5,11 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Sat Apr 16 10:16:07 2016 edouard puillandre
-** Last update Sun Apr 17 20:08:33 2016 edouard puillandre
+** Last update Sun Apr 17 21:30:46 2016 edouard puillandre
 */
 
 #include "adventure.h"
 
-#include <stdio.h>
 void	def_pos_button(t_button **button)
 {
   button[ID_USE]->pos.x = X_USE;
@@ -88,4 +87,24 @@ t_board		*my_init_board()
   board->calque->scale = 100;
   board->sel = ID_GO;
   return (board);
+}
+
+void	my_free_board(t_board *board)
+{
+  int	i;
+
+  i = - 1;
+  while (board->button[++i] != NULL)
+    bunny_free(board->button[i]);
+  i = - 1;
+  while (board->obj[++i] != NULL)
+    {
+      bunny_free(board->obj[i]->calque);
+      bunny_free(board->obj[i]);
+    }
+  bunny_delete_clipable(&board->calque->pix->clipable);
+  bunny_free(board->calque);
+  bunny_free(board->button);
+  bunny_free(board->obj);
+  bunny_free(board);
 }
