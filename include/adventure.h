@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 11:36:34 2016 edouard puillandre
+** Last update Sun Apr 17 11:46:56 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -49,6 +49,8 @@
 # define Y_OBJ (740)
 # define BOARD_BMP "ressource/interface/interface_2.0.bmp"
 # define ABS(x) (((x) < 0) ? - (x) : (x))
+# define CUR data->player->cur_mov
+# define MOV data->player->mov[CUR]->cur_pos
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -85,7 +87,7 @@ typedef struct		s_move
 /* noeud de position*/
 typedef struct		s_node
 {
-  t_bunny_position	*pos; /* position du noeud*/
+  t_bunny_position	pos; /* position du noeud*/
   int			scale; /* echelle du perso à ce noeud*/
   int			*way; /* chemin sur lequel se trouve le noeud*/
   int			pos_way; /* position du noeud dans le chemin */
@@ -97,11 +99,14 @@ typedef struct		s_node
 typedef struct	s_char
 {
   t_move	**mov; /* tableau des mouvements*/
+  float		coef[2];
+  float		vec[2];
   t_node	*cur; /* node sur lequel est le perso */
   t_node	*next; /* node sur lequel va le perso */
   t_node	*dest; /* node de destination du perso */
   int		cur_mov; /*mouvement courant*/
   int		id_calc;
+  int		mov_or_not;
   float		x;
   float		y;
 }		t_char;
@@ -167,6 +172,7 @@ typedef struct		s_board
 
 typedef	struct		s_data
 {
+  int			loop;
   t_bunny_window       	*win;
   t_bunny_position	*pos;
   t_bunny_pixelarray	*pix;
@@ -238,5 +244,10 @@ int	my_talk(t_data *);
 int	my_look(t_data *);
 int	compare_to_col(t_color, t_color);
 void	draw_board(t_data *data);
+
+void	calc_coef(float, float, t_bunny_position *, t_data *);
+void	move_perso(t_data *);
+
+void	load_node_1(t_data *);
 
 #endif /* !ADVENTURE_H_ */

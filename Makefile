@@ -5,7 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Sun Apr 17 11:11:01 2016 edouard puillandre
+## Last update Sun Apr 17 11:47:34 2016 edouard puillandre
 ##
 
 DEBUG	=	yes
@@ -46,9 +46,11 @@ SRC	=	src/main.c		\
 		src/change_clipable.c	\
 		src/tekpixel.c		\
 		src/scale.c		\
-		src/init_board.c	\
 		src/check_click.c	\
+		src/coef.c		\
+		src/init_board.c	\
 		src/fct_button.c	\
+		src/load_node.c		\
 		src/put_board.c
 
 RM	=	rm -f

@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 11:38:20 2016 edouard puillandre
+** Last update Sun Apr 17 11:44:17 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -25,9 +25,15 @@ t_bunny_response	mainloop(t_data *data)
       have_pos(data);
     }
   envoi_to_copy(data);
+  move_perso(data);
+
   /* printf("ok\n"); */
   /* have_pos(data); */
+  change_pos_perso(data->player->mov[CUR]->calque[0]->pix, data->loop);
   bunny_blit(&data->win->buffer, &data->pix->clipable, data->pos);
+  /* data->loop++; */
+  /* if (data->loop == 12) */
+  /*   data->loop = 0; */
   /* bunny_blit(&data->win->buffer, */
   /* 	     &data->player->mov[0]->calque[0]->pix->clipable, data->pos); */
   bunny_display(data->win);
@@ -48,36 +54,44 @@ t_bunny_response	click(t_bunny_event_state	state,
 			      t_bunny_mousebutton     	key,
 			      t_data			*data)
 {
-  const t_bunny_position	*pos;
+  /* const t_bunny_position	*pos; */
 
   (void) data;
   (void) state;
   (void) key;
 
-  pos = bunny_get_mouse_position();
+  /* pos = bunny_get_mouse_position(); */
+
   if (state == GO_DOWN)
     {
+      calc_coef(data->player->mov[0]->calque[0]->x,
+		data->player->mov[0]->calque[0]->y,
+		data->mouse,
+		data);
+
+      /* move_perso(data); */
+
       /* printf("YEAH\n"); */
       check_click(data);
-      pos = bunny_get_mouse_position();
-      printf("x = %i\ty = %i\n", pos->x, pos->y);
-      if (data->id_plan == 0)
-	{
-	  free_calque(data);
+      /* pos = bunny_get_mouse_position(); */
+      printf("x = %i\ty = %i\n", data->mouse->x, data->mouse->y);
+      /* if (data->id_plan == 0) */
+      /* 	{ */
+      /* 	  free_calque(data); */
 
-	  data->id_plan = 1;
-	  if (load_decor_2(data) == NULL)
-	    return (0);
-	  return (GO_ON);
-	}
-      if (data->id_plan == 1)
-	{
-	  free_calque(data);
-	  data->id_plan = 0;
-	  if (load_decor_1(data) == NULL)
-	    return (0);
-	  return (GO_ON);
-	}
+      /* 	  data->id_plan = 1; */
+      /* 	  if (load_decor_2(data) == NULL) */
+      /* 	    return (0); */
+      /* 	  return (GO_ON); */
+      /* 	} */
+      /* if (data->id_plan == 1) */
+      /* 	{ */
+      /* 	  free_calque(data); */
+      /* 	  data->id_plan = 0; */
+      /* 	  if (load_decor_1(data) == NULL) */
+      /* 	    return (0); */
+      /* 	  return (GO_ON); */
+      /* 	} */
     }
   return (GO_ON);
 }

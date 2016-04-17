@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Sun Apr 17 11:10:37 2016 edouard puillandre
+** Last update Sun Apr 17 11:50:07 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -38,29 +38,6 @@ int	compare_to_col(t_color color, t_color back_color)
     }
   return (0);
 }
-
-/* void			copy_in_pix(t_calque *calque, t_data *data) */
-/* { */
-/*   int			i; */
-/*   t_bunny_position	pos; */
-/*   t_color		*color; */
-
-/*   i = 0; */
-/*   color = calque->pix->pixels; */
-/*   while (i < calque->pix->clipable.clip_width */
-/* 	 * calque->pix->clipable.clip_height) */
-/*     { */
-/*       if (compare_to_col(color[i], (t_color)BACK_COLOR) == -1) */
-/* 	{ */
-/* 	  pos.x = i % calque->pix->clipable.clip_width + calque->x; */
-/* 	  pos.y = i / calque->pix->clipable.clip_width + calque->y; */
-/* 	  if (pos.x >= 0 && pos.x <= WIN_X) */
-/* 	    tekpixel(data->pix, &pos, */
-/* 		     ((unsigned int *)calque->pix->pixels)[i]); */
-/* 	} */
-/*       i++; */
-/*     } */
-/* } */
 
 void			copy_in_pix(t_calque *calque, t_data *data)
 {
@@ -104,11 +81,10 @@ void	envoi_to_copy(t_data *data)
     {
       data->plan[0]->calque[i]->scale = 100;
       copy_in_pix(data->plan[0]->calque[i], data);
-      data->player->mov[0]->calque[0]->scale = 50;
-      draw_board(data);
-      if (i == 5)
-      	/* copy_in_pix_bis(data->player->mov[0]->calque[0], data); */
-	copy_in_pix(data->player->mov[0]->calque[0], data);
+      /* data->player->mov[0]->calque[0]->scale = 50; */
+      printf("%d\n", i);
+      if (i == 6)
+      	copy_in_pix(data->player->mov[CUR]->calque[MOV], data);
       i++;
     }
 
