@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 23:07:21 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:21:50 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -52,6 +52,9 @@
 # define BOARD_BMP "ressource/interface/interface_2.0.bmp"
 # define FONT_BMP "ressource/interface/fonte.bmp"
 # define CONFIG "ressource/ini/configuration.ini"
+# define CIEL "ressource/decor_1/ciel.bmp"
+# define NUAGES "ressource/decor_1/nuages.bmp"
+# define MONT "ressource/decor_1/Montagne.bmp"
 # define ABS(x) (((x) < 0) ? - (x) : (x))
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos

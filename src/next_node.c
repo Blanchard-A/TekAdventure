@@ -1,12 +1,11 @@
 /*
-** next_node.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
+** next_node.c for tekadv in /home/blanch_p/rendu/Semestre2/gfx_tekadventure
 **
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Sun Apr 17 13:09:04 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:03:47 2016 edouard puillandre
-** Last update Sun Apr 17 23:56:41 2016 Voyevoda
+** Last update Sun Apr 17 23:25:20 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
