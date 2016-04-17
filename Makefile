@@ -5,8 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Sun Apr 17 23:04:14 2016 Alexandre Blanchard
-## Last update Sun Apr 17 19:10:08 2016 Alexandre Blanchard
+## Last update Sun Apr 17 23:07:40 2016 Alexandre Blanchard
 ##
 
 DEBUG	=	yes
@@ -62,6 +61,8 @@ SRC	=	src/main.c		\
 		src/move_poteau.c	\
 		src/load_node_1.c	\
 		src/check_click_bis.c	\
+		src/my_getnbr.c		\
+		src/set_ram.c
 
 RM	=	rm -f
 

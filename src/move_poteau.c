@@ -1,16 +1,14 @@
 /*
-** move_poteau.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
+** move_poteau.c for tekadv in /home/blanch_p/rendu/gfx_tekadventure
 ** 
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 19:03:05 2016 Alexandre Blanchard
-** Last update Sun Apr 17 21:50:56 2016 Alexandre Blanchard
+** Last update Sun Apr 17 23:06:15 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
-
-#include <stdio.h>
 
 void	move_poteau(t_data *data)
 {

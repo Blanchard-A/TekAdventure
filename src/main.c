@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 23:02:27 2016 Voyevoda
+** Last update Sun Apr 17 23:02:05 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -13,7 +13,8 @@
 t_bunny_response	mainloop(t_data *data)
 {
   if (data->player->coef[0] == 0 && data->player->coef[1] == 0)
-    to_next_node(data);
+    if (to_next_node(data) == - 1)
+      return (EXIT_ON_ERROR);
   if (data->player->coef[0] != 0 && data->player->coef[1] != 0)
     move_perso(data);
   if (data->id_plan == 0)
@@ -84,7 +85,7 @@ int	main(int ac, char **av, char **env)
   bunny_set_click_response((t_bunny_click)click);
   if (bunny_loop(data->win, 90, data) == EXIT_ON_ERROR)
     return (1);
-#ifdef	DEBUG
+ #ifdef	DEBUG
   write(1, "STATUS: OK\n", 11);
 #endif
   return (0);
