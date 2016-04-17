@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Sun Apr 17 18:28:08 2016 edouard puillandre
-** Last update Sun Apr 17 23:54:12 2016 Voyevoda
+** Last update Sun Apr 17 23:24:53 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -23,7 +23,7 @@ void	tekletter(t_bunny_pixelarray	*pix,
   w =  width / COL_FONT;
   h = height / ROW_FONT;
   if (c < 0)
-    return;
+    return ;
   pix->clipable.clip_x_position = (c * w) % width - 2;
   pix->clipable.clip_y_position = (c * w) / width * h;
   pix->clipable.clip_width = w;
@@ -88,7 +88,7 @@ void			tektext(t_bunny_pixelarray	*out,
   int			height;
 
   if (text->str == NULL)
-    return;
+    return ;
   i = - 1;
   pos_c = text->pos;
   height = text->font->clipable.buffer.height / ROW_FONT;
@@ -96,14 +96,14 @@ void			tektext(t_bunny_pixelarray	*out,
     if (text->str[i] >= 32)
       {
 	if (check_plot(out, text->font, &text->pos, &pos_c) == - 1)
-	  return;
+	  return ;
 	cpyletter(out, text->font, &pos_c, text->str[i]);
       }
     else if (text->str[i] == '\n' || text->str[i] == '\r')
       {
 	pos_c.x = text->pos.x;
 	if ((pos_c.y = pos_c.y + height) > out->clipable.buffer.height)
-	  return;
+	  return ;
       }
 }
 

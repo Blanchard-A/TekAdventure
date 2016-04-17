@@ -1,11 +1,11 @@
 /*
 ** decal.c for tekadv in /home/blanch_p/Semestre2/Infographie/gfx_tekadventure
-** 
+**
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
-** 
+**
 ** Started on  Tue Apr 12 11:31:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:07:29 2016 Voyevoda
+** Last update Sun Apr 17 23:23:02 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -70,7 +70,6 @@ void	change_perso_bord_center(t_data *data)
       i++;
     }
 }
-
 
 void	on_the_bord(t_data *data, const t_bunny_position *pos)
 {
