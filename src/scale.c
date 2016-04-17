@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 12:17:28 2016 Alexandre Blanchard
-** Last update Sun Apr 17 11:42:58 2016 edouard puillandre
+** Last update Sun Apr 17 17:58:32 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -75,7 +75,7 @@ unsigned int		col_scale(t_bunny_pixelarray	*pix,
   return (float_to_int(tot, check));
 }
 
-void			to_pix_scale(t_data *data, t_calque *calque)
+void			to_pix_scale(t_data *data, t_calque *calque, int dec)
 {
   int			size[2];
   t_bunny_position	drw;
@@ -91,8 +91,7 @@ void			to_pix_scale(t_data *data, t_calque *calque)
       tmp.y = 0;
       while (++tmp.y < size[1])
 	{
-	  drw.x = tmp.x + (int) calque->x;
-	  drw.y = tmp.y + (int) calque->y;
+	  drw = calc_coord(&tmp, calque, dec);
 	  get[0] = ((float) ((tmp.x + calque->pix->clipable.clip_x_position)
 			     * 100)) / (float) calque->scale;
 	  get[1] = ((float) ((tmp.y + calque->pix->clipable.clip_y_position)

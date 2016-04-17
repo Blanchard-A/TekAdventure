@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 12:10:27 2016 Alexandre Blanchard
-** Last update Sun Apr 17 15:01:17 2016 Alexandre Blanchard
+** Last update Sun Apr 17 16:04:39 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -15,23 +15,24 @@
 int     my_go(t_data *data)
 {
   int	node;
-  /* int	*chemin; */
   int	i;
 
   i = 0;
-  data->player->chemin = bunny_malloc(sizeof(int) * 11);
-  /* printf("go\n"); */
-  if ((node = check_click(data)) >= 0)
+  if (data->player->chemin[0] != -1)
+    return (0);
+  if ((node = check_click_node(data)) >= 0)
     {      
-      /* printf("node = %i\n", node); */
-      data->player->chemin = search_way(data->player->cur_node,
-					node, data->plan[0]->node);
-      while (data->player->chemin[i] >= 0)
+      if (node != 10)
 	{
-	  /* printf("chemin[%i] = %i\n", i, data->player->chemin[i]); */
-	  i++;
+	  data->player->chemin = search_way(data->player->cur_node,
+					    node, data->plan[0]->node,
+					    data->player->chemin);
+	  while (data->player->chemin[i] >= 0)
+	    {
+	      i++;
+	    }
+	  data->player->dest_node = data->player->chemin[i - 1];
 	}
-      data->player->dest_node = data->player->chemin[i - 1];
     }  
   return (0);
 }
@@ -59,25 +60,25 @@ int     find_way(t_node *dep, t_node *arr)
   return (-1);
 }
 
-int     *search_way(int depart, int arrivee, t_node **nod)
+int     *search_way(int depart, int arrivee, t_node **nod, int *chemin)
 {
   int   i;
   int   inter;
-  int   *chemin;
+  /* int   *chemin; */
   int   j;
   /* int        way; */
   /* int        res; */
 
   /* i = depart; */
   j = 0;
-  chemin = malloc(sizeof(int) * 10);
+  /* chemin = bunny_malloc(sizeof(int) * 10); */
   if ((i = find_way(nod[depart], nod[arrivee])) > 0)
     {
       /* printf("Meme chemin\n"); */
       while (depart != arrivee)
         {
           chemin[j++] = depart;
-          /* printf("Je pars à %i\n", depart); */
+          printf("Je pars à %i\n", depart);
           /* printf("Meme chemin\n"); */
           depart = find_same_way(i, depart, arrivee, nod);
           /* printf("J'arrive à %i\n\n", depart); */

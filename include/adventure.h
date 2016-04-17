@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 15:17:51 2016 edouard puillandre
+** Last update Sun Apr 17 18:18:31 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -13,6 +13,8 @@
 
 # define WIN_X (1024)
 # define WIN_Y (920)
+# define COL_FONT (16)
+# define ROW_FONT (16)
 # define INIT_COLOR (0x00000000)
 # define BACK_COLOR (0xFFCC33FF)
 # define WIN_NAME "Window"
@@ -52,6 +54,8 @@
 # define CUR data->player->cur_mov
 # define MOV data->player->mov[CUR]->cur_pos
 # define SCALE data->player->mov[CUR]->calque[MOV]->scale
+# define PLAN data->plan[0]
+# define CAL data->plan[0]->calque
 
 # include <stdlib.h>
 # include <sys/types.h>
@@ -84,6 +88,13 @@ typedef struct		s_move
   int			div; /* nb image dans le sprite*/
   int			cur_pos; /* position courante */
 }			t_move;
+
+typedef struct		s_text
+{
+  t_bunny_pixelarray	*font;
+  t_bunny_position	pos;
+  char			*str;
+}			t_text;
 
 /* noeud de position*/
 typedef struct		s_node
@@ -217,8 +228,7 @@ t_bunny_response	my_fct_free(t_data *data, int error_true);
 t_data			*my_init_data();
 t_bunny_pixelarray	*load_bitmap(char *filepath);
 void			envoi_to_copy(t_data *data);
-void			copy_in_pix(t_calque *calque, t_data *data);
-void			copy_in_pix_bis(t_calque *calque, t_data *data);
+void			copy_in_pix(t_calque *calque, t_data *data, int dec);
 void			change_pos(t_data *);
 void			change_pos_nuages(t_data *);
 void			on_the_bord(t_data *, const t_bunny_position *);
@@ -235,7 +245,7 @@ void			tekpixel(t_bunny_pixelarray	*pix,
 				 unsigned int		color);
 unsigned int		getpixel(t_bunny_pixelarray	*pix,
 				 t_bunny_position	*pos);
-void			to_pix_scale(t_data *data, t_calque *calque);
+void			to_pix_scale(t_data *data, t_calque *calque, int dec);
 void	free_calque(t_data *);
 int	my_malloc_plan(t_data *, int);
 t_board	*my_init_board();
@@ -259,11 +269,14 @@ int	check_click_node(t_data *data);
 int	check_click_button(t_data *data);
 int	check_click_bis(t_data *data);
 
-int	*search_way(int, int, t_node **);
+int	*search_way(int, int, t_node **, int *);
 int	find_way(t_node *, t_node *);
 int	find_same_way(int, int, int, t_node **);
 int	find_diff_way(int, int, t_node **);
-
+t_bunny_position	calc_coord(t_bunny_position	*tmp,
+				   t_calque		*calque,
+				   int			dec);
+void	load_node_2(t_data *);
 void	to_next_node(t_data *);
 
 #endif /* !ADVENTURE_H_ */

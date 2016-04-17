@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 14:57:08 2016 Alexandre Blanchard
+** Last update Sun Apr 17 17:23:00 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -79,14 +79,18 @@ t_data		*my_init_data()
       load_node_1(data);
     }
   if (data->id_plan == 1)
-    load_decor_2(data);
+    {
+      load_decor_2(data);
+      load_node_2(data);
+    }
   malloc_and_load_perso(data);
   data->player->vec[0] = 0;
   data->player->vec[1] = 0;
   data->player->coef[0] = 0;
   data->player->coef[1] = 0;
   data->loop = 0;
-  data->player->chemin = NULL;
+  data->player->chemin = bunny_malloc(sizeof(int) * 11);
+  data->player->chemin[0] = -1;
   CUR = 0;
   MOV = 1;
   data->pos->x = PIX_X;

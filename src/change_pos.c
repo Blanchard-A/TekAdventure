@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Mon Apr 11 10:29:23 2016 Alexandre Blanchard
-** Last update Sun Apr 17 11:09:46 2016 Alexandre Blanchard
+** Last update Sun Apr 17 16:14:01 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -47,7 +47,8 @@ void	change_pos(t_data *data)
 	  
 	  if (data->plan[0]->calque[i]->x <=
 	      data->plan[0]->calque[i]->x_init - 10)
-  	data->plan[0]->calque[i]->x_speed = -data->plan[0]->calque[i]->x_speed;
+	    data->plan[0]->calque[i]->x_speed =
+	      -data->plan[0]->calque[i]->x_speed;
 	  if (data->plan[0]->calque[i]->x >=
 	      data->plan[0]->calque[i]->x_init + 10)
 	    data->plan[0]->calque[i]->x_speed =
