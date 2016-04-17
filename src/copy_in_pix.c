@@ -6,7 +6,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Thu Apr  7 17:17:53 2016 Alexandre Blanchard
-** Last update Sun Apr 17 15:17:18 2016 edouard puillandre
+** Last update Sun Apr 17 17:42:41 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -82,9 +82,10 @@ void	envoi_to_copy(t_data *data)
       data->plan[0]->calque[i]->scale = 100;
       copy_in_pix(data->plan[0]->calque[i], data);
       draw_board(data);
-      data->player->mov[CUR]->calque[MOV]->scale = 25;
+      data->player->mov[CUR]->calque[MOV]->scale =
+	data->plan[0]->node[data->player->cur_node]->scale;
       /* printf("%d\n", i); */
-      if (i == 4)
+      if (i == data->plan[0]->node[data->player->cur_node]->id_cal)
 	copy_in_pix(data->player->mov[CUR]->calque[MOV], data);
       i++;
     }
