@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:59 2016 edouard puillandre
-** Last update Sun Apr 17 17:23:00 2016 Alexandre Blanchard
+** Last update Sun Apr 17 18:56:31 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -62,7 +62,8 @@ t_data		*my_init_data()
       (data->pix = bunny_new_pixelarray(WIN_X, WIN_Y)) == NULL ||
       (data->win = bunny_start(WIN_X, WIN_Y, false, WIN_NAME)) == NULL ||
       (data->pos = bunny_malloc(sizeof(t_bunny_position))) == NULL ||
-      (data->board = my_init_board()) == NULL)
+      (data->board = my_init_board()) == NULL ||
+      (data->text = init_text()) == NULL)
     {
       printf("%p\n", data->plan[0]->calque[0]->pix);
       printf("%p\n", data->plan[0]->calque[1]->pix);

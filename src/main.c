@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 15:39:55 2016 Alexandre Blanchard
+** Last update Sun Apr 17 20:03:34 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -33,7 +33,7 @@ t_bunny_response	mainloop(t_data *data)
       have_pos(data);
     }
   envoi_to_copy(data);
-
+  tektext(data->pix, data->text);
 
   /* printf("ok\n"); */
   /* have_pos(data); */
@@ -128,7 +128,6 @@ int	main(int ac, char **av, char **env)
     return (1);
   if ((data = my_init_data()) == NULL)
     return (1);
-  my_init_board();
   bunny_set_loop_main_function((t_bunny_loop)mainloop);
   bunny_set_key_response((t_bunny_key)escape);
   bunny_set_move_response((t_bunny_move)move);
