@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 13:09:04 2016 Alexandre Blanchard
-** Last update Sun Apr 17 14:56:26 2016 Alexandre Blanchard
+** Last update Sun Apr 17 15:23:39 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -20,11 +20,7 @@ void	to_next_node(t_data *data)
   if (data->player->cur_node == data->player->dest_node)
     {
       data->player->mov[CUR]->cur_pos = 1;
-      /* if (data->player->chemin != NULL) */
-      /* 	{ */
-      /* 	  bunny_free(data->player->chemin); */
-      /* 	  data->player->chemin = NULL; */
-      /* 	} */
+      data->player->chemin[0] = -1;
       return ;
     }
   while (data->player->chemin[i] != data->player->cur_node)

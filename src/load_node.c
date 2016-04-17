@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 10:24:01 2016 Alexandre Blanchard
-** Last update Sun Apr 17 14:51:33 2016 Alexandre Blanchard
+** Last update Sun Apr 17 15:35:48 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -15,14 +15,14 @@ void	malloc_node_1(t_data *data)
   int	i;
 
   i = 0;
-  data->plan[0]->node = malloc(sizeof(t_node *) * 11);
-  while (i < 10)
+  data->plan[0]->node = malloc(sizeof(t_node *) * 12);
+  while (i < 11)
     {
       data->plan[0]->node[i] = malloc(sizeof(t_node) * 1);
       data->plan[0]->node[i]->way = malloc(sizeof(int) * 3);
       i++;
     }
-  data->plan[0]->node[10] = NULL;
+  data->plan[0]->node[11] = NULL;
 }
 
 void	load_node_1(t_data *data)
@@ -99,5 +99,12 @@ void	load_node_1(t_data *data)
   data->plan[0]->node[9]->way[0] = 3;
   data->plan[0]->node[9]->way[1] = -1;
   data->plan[0]->node[9]->way[2] = -1;
-  data->plan[0]->node[9]->pos_way = 5;  
+  data->plan[0]->node[9]->pos_way = 5;
+
+  data->plan[0]->node[10]->pos.x = 382;
+  data->plan[0]->node[10]->pos.y = 319;
+  data->plan[0]->node[10]->way[0] = -1;
+  data->plan[0]->node[10]->way[1] = -1;
+  data->plan[0]->node[10]->way[2] = -1;
+  data->plan[0]->node[10]->pos_way = 1;
 }

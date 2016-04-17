@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 13:10:49 2016 Alexandre Blanchard
+** Last update Sun Apr 17 15:37:16 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -76,7 +76,7 @@ t_bunny_response	click(t_bunny_event_state	state,
       /* 		data->player->mov[0]->calque[0]->y, */
       /* 		data->mouse, */
       /* 		data); */
-
+      printf("x = %i\ty = %i\n", data->mouse->x, data->mouse->y);
       my_go(data);
 
       /* move_perso(data); */
@@ -84,7 +84,7 @@ t_bunny_response	click(t_bunny_event_state	state,
       /* printf("YEAH\n"); */
       /* check_click(data); */
       /* pos = bunny_get_mouse_position(); */
-      /* printf("x = %i\ty = %i\n", data->mouse->x, data->mouse->y); */
+
       /* if (data->id_plan == 0) */
       /* 	{ */
       /* 	  free_calque(data); */

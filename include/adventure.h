@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 13:23:21 2016 Alexandre Blanchard
+** Last update Sun Apr 17 15:28:05 2016 Alexandre Blanchard
 */
 
 #ifndef ADVENTURE_H_
@@ -255,7 +255,7 @@ void	move_perso(t_data *);
 
 void	load_node_1(t_data *);
 
-int	*search_way(int, int, t_node **);
+int	*search_way(int, int, t_node **, int *);
 int	find_way(t_node *, t_node *);
 int	find_same_way(int, int, int, t_node **);
 int	find_diff_way(int, int, t_node **);
