@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:51:22 2016 edouard puillandre
-** Last update Sun Apr 17 17:58:15 2016 edouard puillandre
+** Last update Sun Apr 17 18:18:31 2016 edouard puillandre
 */
 
 #ifndef ADVENTURE_H_
@@ -276,6 +276,7 @@ int	find_diff_way(int, int, t_node **);
 t_bunny_position	calc_coord(t_bunny_position	*tmp,
 				   t_calque		*calque,
 				   int			dec);
+void	load_node_2(t_data *);
 void	to_next_node(t_data *);
 
 #endif /* !ADVENTURE_H_ */

@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Sat Apr 16 14:37:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 17:58:42 2016 edouard puillandre
+** Last update Sun Apr 17 18:18:08 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -74,16 +74,16 @@ void	move_perso(t_data *data)
   data->player->vec[1] = data->player->vec[1] - (int)data->player->vec[1];
 
   if ((data->player->x >=
-       data->plan[data->id_plan]->node[data->player->next_node]->pos.x &&
+       data->plan[0]->node[data->player->next_node]->pos.x &&
        data->player->coef[0] > 0) ||
       (data->player->x <=
-       data->plan[data->id_plan]->node[data->player->next_node]->pos.x &&
+       data->plan[0]->node[data->player->next_node]->pos.x &&
        data->player->coef[0] < 0) ||
        (data->player->y >=
-  	data->plan[data->id_plan]->node[data->player->next_node]->pos.y &&
+  	data->plan[0]->node[data->player->next_node]->pos.y &&
        data->player->coef[1] > 0) ||
       (data->player->y <=
-       data->plan[data->id_plan]->node[data->player->next_node]->pos.y &&
+       data->plan[0]->node[data->player->next_node]->pos.y &&
        data->player->coef[1] < 0))
     {
       data->player->cur_node = data->player->next_node;
