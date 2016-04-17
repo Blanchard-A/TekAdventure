@@ -5,8 +5,7 @@
 ## Login   <puilla_e@epitech.net>
 ##
 ## Started on  Tue Mar 29 16:49:58 2016 edouard puillandre
-## Last update Sun Apr 17 22:37:04 2016 edouard puillandre
-## Last update Sun Apr 17 19:10:08 2016 Alexandre Blanchard
+## Last update Sun Apr 17 23:20:59 2016 edouard puillandre
 ##
 
 DEBUG	=	yes
@@ -60,12 +59,13 @@ SRC	=	src/main.c		\
 		src/tektext.c		\
 		src/string.c		\
 		src/move_poteau.c	\
+		src/load_node_1.c	\
 		src/my_getnbr.c		\
 		src/set_ram.c
 
 RM	=	rm -f
 
-NAME	=	diabete_man
+NAME	=	aventure
 
 OBJ	=	$(SRC:.c=.o)
 

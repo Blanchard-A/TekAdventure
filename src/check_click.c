@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 16:31:12 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:17:50 2016 edouard puillandre
+** Last update Sun Apr 17 23:20:03 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -80,7 +80,7 @@ int	check_click_node(t_data *data)
   return (-1);
 }
 
-int	check_click_bis(t_data *data)
+int	check_click(t_data *data)
 {
   int	check;
 

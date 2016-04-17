@@ -5,12 +5,12 @@
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Sun Apr 17 12:10:27 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:06:55 2016 Voyevoda
+** Last update Sun Apr 17 22:41:24 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
 
-int     my_go(t_data *data)
+int	my_go(t_data *data)
 {
   int	node;
   int	i;
@@ -35,10 +35,10 @@ int     my_go(t_data *data)
   return (0);
 }
 
-int     find_way(t_node *dep, t_node *arr)
+int	find_way(t_node *dep, t_node *arr)
 {
-  int   i;
-  int   j;
+  int	i;
+  int	j;
 
   j = 0;
   i = 0;
@@ -56,11 +56,36 @@ int     find_way(t_node *dep, t_node *arr)
   return (-1);
 }
 
-int     *search_way(int depart, int arrivee, t_node **nod, int *chemin)
+int	*pas_meme_chemin(int *chemin, int depart, int arrivee, t_node **nod)
 {
-  int   i;
-  int   inter;
-  int   j;
+  int	inter;
+  int	i;
+  int	j;
+
+  j = 0;
+  inter = find_diff_way(depart, arrivee, nod);
+  while (depart != inter)
+    {
+      chemin[j++] = depart;
+      inter = find_diff_way(depart, arrivee, nod);
+      i = find_way(nod[depart], nod[inter]);
+      depart = find_same_way(i, depart, inter, nod);
+    }
+  while (depart != arrivee)
+    {
+      chemin[j++] = depart;
+      i = find_way(nod[depart], nod[arrivee]);
+      depart = find_same_way(i, depart, arrivee, nod);
+    }
+  chemin[j++] = depart;
+  chemin[j] = -1;
+  return (chemin);
+}
+
+int	*search_way(int depart, int arrivee, t_node **nod, int *chemin)
+{
+  int	i;
+  int	j;
 
   j = 0;
   if ((i = find_way(nod[depart], nod[arrivee])) > 0)
@@ -73,20 +98,8 @@ int     *search_way(int depart, int arrivee, t_node **nod, int *chemin)
     }
   else
     {
-      inter = find_diff_way(depart, arrivee, nod);
-      while (depart != inter)
-        {
-          chemin[j++] = depart;
-	  inter = find_diff_way(depart, arrivee, nod);
-	  i = find_way(nod[depart], nod[inter]);
-          depart = find_same_way(i, depart, inter, nod);
-        }
-      while (depart != arrivee)
-        {
-	  chemin[j++] = depart;
-          i = find_way(nod[depart], nod[arrivee]);
-	  depart = find_same_way(i, depart, arrivee, nod);
-	}
+      chemin = pas_meme_chemin(chemin, depart, arrivee, nod);
+      return (chemin);
     }
   chemin[j++] = depart;
   chemin[j] = -1;

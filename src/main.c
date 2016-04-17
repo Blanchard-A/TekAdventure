@@ -5,7 +5,7 @@
 ** Login   <puilla_e@epitech.net>
 **
 ** Started on  Tue Mar 29 16:50:38 2016 edouard puillandre
-** Last update Sun Apr 17 23:16:46 2016 edouard puillandre
+** Last update Sun Apr 17 23:19:00 2016 edouard puillandre
 */
 
 #include "adventure.h"
@@ -52,7 +52,7 @@ t_bunny_response	click(t_bunny_event_state	state,
 
   if (state == GO_DOWN)
     {
-      check_click_bis(data);
+      check_click(data);
     }
   return (GO_ON);
 }

@@ -5,7 +5,7 @@
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Mon Apr 11 10:29:23 2016 Alexandre Blanchard
-** Last update Sun Apr 17 22:43:44 2016 Voyevoda
+** Last update Sun Apr 17 22:14:24 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -29,46 +29,18 @@ void	change_pos(t_data *data)
     {
       if (i != 1)
 	{
-	  data->plan[0]->calque[i]->x = data->plan[0]->calque[i]->x +
-	    data->plan[0]->calque[i]->x_speed;
-	  data->plan[0]->calque[i]->y = data->plan[0]->calque[i]->y +
-	    data->plan[0]->calque[i]->y_speed / 4;
-      
-	  if (data->plan[0]->calque[i]->y <=
-	      data->plan[0]->calque[i]->y_init - 4)
-	    data->plan[0]->calque[i]->y_speed =
-	      -data->plan[0]->calque[i]->y_speed;
-	  if (data->plan[0]->calque[i]->y >=
-	      data->plan[0]->calque[i]->y_init + 3)
-	    data->plan[0]->calque[i]->y_speed =
-	      -data->plan[0]->calque[i]->y_speed;
-	  
-	  if (data->plan[0]->calque[i]->x <=
-	      data->plan[0]->calque[i]->x_init - 10)
-	    data->plan[0]->calque[i]->x_speed =
-	      -data->plan[0]->calque[i]->x_speed;
-	  if (data->plan[0]->calque[i]->x >=
-	      data->plan[0]->calque[i]->x_init + 10)
-	    data->plan[0]->calque[i]->x_speed =
-	      -data->plan[0]->calque[i]->x_speed;
+	  PLAN->calque[i]->x = PLAN->calque[i]->x + PLAN->calque[i]->x_speed;
+	  PLAN->calque[i]->y = PLAN->calque[i]->y +
+	    PLAN->calque[i]->y_speed / 4;
+	  if (PLAN->calque[i]->y <=PLAN->calque[i]->y_init - 4)
+	    PLAN->calque[i]->y_speed = -PLAN->calque[i]->y_speed;
+	  if (PLAN->calque[i]->y >= PLAN->calque[i]->y_init + 3)
+	    PLAN->calque[i]->y_speed = -PLAN->calque[i]->y_speed;
+	  if (PLAN->calque[i]->x <= PLAN->calque[i]->x_init - 10)
+	    PLAN->calque[i]->x_speed = -PLAN->calque[i]->x_speed;
+	  if (PLAN->calque[i]->x >= PLAN->calque[i]->x_init + 10)
+	    PLAN->calque[i]->x_speed = -PLAN->calque[i]->x_speed;
 	}
       i++;
     }
-
-  /* data->plan[0]->calque[5]->x = data->plan[0]->calque[5]->x + */
-  /*   data->plan[0]->calque[5]->x_speed; */
-  /* data->plan[0]->calque[5]->y = data->plan[0]->calque[5]->y + */
-  /*   data->plan[0]->calque[5]->y_speed / 4; */
-
-  /* if (data->plan[0]->calque[5]->y <= 555 - rand() % 10) */
-  /*   data->plan[0]->calque[5]->y_speed = -data->plan[0]->calque[5]->y_speed; */
-  /* if (data->plan[0]->calque[5]->y >= 565 + rand() % 10) */
-  /*   data->plan[0]->calque[5]->y_speed = -data->plan[0]->calque[5]->y_speed; */
-
-  /* if (data->plan[0]->calque[5]->x <= -20 /\* + rand() % 5 *\/) */
-  /*   data->plan[0]->calque[5]->x_speed = -data->plan[0]->calque[5]->x_speed; */
-  /* if (data->plan[0]->calque[5]->x >= -5 /\* + rand() % 5 *\/) */
-  /*   data->plan[0]->calque[5]->x_speed = -data->plan[0]->calque[5]->x_speed; */
-
-
 }

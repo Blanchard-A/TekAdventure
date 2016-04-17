@@ -1,11 +1,11 @@
 /*
-** move_poteau.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
+** move_poteau.c for tekadv in /home/blanch_p/rendu/gfx_tekadventure
 ** 
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
 ** 
 ** Started on  Sun Apr 17 19:03:05 2016 Alexandre Blanchard
-** Last update Mon Apr 18 00:02:08 2016 Voyevoda
+** Last update Sun Apr 17 23:06:15 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"

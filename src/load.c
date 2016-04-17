@@ -1,11 +1,11 @@
 /*
-** load.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
+** load.c for tekadv in /home/blanch_p/rendu/Semestre2/gfx_tekadventure
 **
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Fri Apr 15 10:26:38 2016 Alexandre Blanchard
-** Last update Sun Apr 17 23:02:16 2016 edouard puillandre
+** Last update Sun Apr 17 23:06:39 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
@@ -159,6 +159,7 @@ t_data	*load_decor_2(t_data *data)
        load_bitmap("ressource/decor_2/poteau.bmp")) == NULL)
     return (NULL);
   data->plan[0]->calque[3] = NULL;
+  data->plan[0]->obj[1] = NULL;
   data->plan[0]->pnj = NULL;
   data->plan[0]->obj[1] = NULL;
    make_position_decor_2(data);
