@@ -1,0 +1,8 @@
+Ajouter un paramètre à bunny_malloc afin de placer un fichier et une ligne
+et permettre de tracer l'alloc. => Non. Pas d'allocation par vague non plus.
+
+Implementer bunny_self_test
+
+
+Une thread pool ultra simple ?
+Des sockets UDP ?

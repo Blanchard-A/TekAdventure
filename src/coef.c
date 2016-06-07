@@ -1,11 +1,11 @@
 /*
-** coef.c for tekadv in /home/blanch_p/rendu/Semestre2/Infographie/gfx_tekadventure
+** coef.c for tekadv in /home/blanch_p/Semestre2/Infographie/gfx_tekadventure
 **
 ** Made by Alexandre Blanchard
 ** Login   <blanch_p@epitech.net>
 **
 ** Started on  Sat Apr 16 14:37:00 2016 Alexandre Blanchard
-** Last update Sun Apr 17 22:18:15 2016 Alexandre Blanchard
+** Last update Fri Apr 22 20:21:23 2016 Alexandre Blanchard
 */
 
 #include "adventure.h"
